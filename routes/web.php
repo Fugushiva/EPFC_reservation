@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//controleur artist fonction "index" qui sera renvoyée sur '/artist'
+Route::get('/artist', [ArtistController::class, 'index'])
+    ->name('artist.index');
+
+Route::get('/artist/{id}', [ArtistController::class, 'show'])
+    ->where('id','[0-9]+')->name('artist.show');
