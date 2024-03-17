@@ -1,20 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Modifier un artiste')
+@section('title', 'Ajouter un artiste')
 
 @section('content')
-    <h2>Modifier un artiste</h2>
+    <h2>Ajouter un artiste</h2>
     <!--On lui précise que ça devra être la route update qui devra être appelée lors de l'envoi-->
-    <form action="{{ route('artist.update', $artist->id) }}" method="post">
+    <form action="{{ route('artist.store') }}" method="post">
         @csrf
-        @method('PUT')
         <div>
             <label for="firstname">Prénom</label>
             <input id="firstname" type="text" name="firstname"
             @if(old('firstname'))
                 value="{{ old('firstname') }}"
-            @else
-                value="{{ $artist->firstname }}"
             @endif
             class="@error('firstname') is-invalid @enderror" >
             @error('firstname')
@@ -27,8 +24,6 @@
             <input id="lastname" type="text" name="lastname"
                    @if(old("lastname"))
                        value="{{old('lastname')}}"
-                   @else
-                       value="{{ $artist->lastnname }}"
                    @endif
                    class="@error('lastname') is-invalid @enderror">
 
@@ -36,8 +31,8 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button>Modifier</button>
-        <a href="{{route('artist.show', $artist->id)}}">Annuler</a>
+        <button>Ajouter</button>
+        <a href="{{route('artist.index')}}">Annuler</a>
     </form>
 
     @if($errors->any())

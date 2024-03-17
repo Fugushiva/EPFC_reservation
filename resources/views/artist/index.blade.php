@@ -4,6 +4,9 @@
 
 @section('content')
     <h1>liste des {{$ressource}}</h1>
+    <ul>
+        <li><a href="{{ route('artist.create') }}">Ajouter</a></li>
+    </ul>
     <table>
         <thead>
             <tr>

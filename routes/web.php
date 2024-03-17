@@ -31,6 +31,17 @@ Route::get('/artist/edit/{id}', [ArtistController::class, 'edit'])
     ->where('id', '[0-9]+') // S'assure que l'ID est bien un nombre.
     ->name('artist.edit');
 
-ROute::put('/artist/{id}', [ArtistController::class, "update"])
+Route::put('/artist/{id}', [ArtistController::class, "update"])
     ->where('id', '[0-9]+') // S'assure que l'ID est bien un nombre.
     ->name('artist.update');
+
+Route::get('/artist/create', [ArtistController::class, 'create'])
+    ->name('artist.create');
+
+Route::post('/artist',[ArtistController::class,'store'])
+    ->name('artist.store');
+
+Route::delete('/artist/{id}/delete', [ArtistController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('artist.delete');
+

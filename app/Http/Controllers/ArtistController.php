@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\View\View;
+
 
 class ArtistController extends Controller
 {
@@ -27,7 +26,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view('artist.create');
     }
 
     /**
@@ -35,12 +34,29 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation des données du formulaire
+
+        $validated = $request->validate([
+            'firstname' => 'required|max:60',
+            'lastname' => 'required|max:60'
+        ]);
+
+        //Le formulaire a été validé, nous créons un nouvel artiste à insérer
+        $artist = new Artist();
+
+        //Assignation des données et sauvegarde dans la base de données
+        $artist->firstname = $validated['firstname'];
+        $artist->lastname = $validated['lastname'];
+
+        $artist->save();
+
+        return redirect()->route('artist.index');
     }
 
     /**
-     * Display the specified resource.
+    * Display the specified resource.
      */
+
     public function show(string $id)
     {
         $artist = Artist::find($id);
@@ -63,7 +79,7 @@ class ArtistController extends Controller
     {
         $artist = Artist::find($id);
 
-        return view('artist.edit',[
+        return view('artist.edit', [
             'artist' => $artist,
         ]);
     }
@@ -72,10 +88,9 @@ class ArtistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //validation des données du formulaire
-
         $validated = $request->validate([
             'firstname' => 'required|max:60',
             'lastname' => 'required|max:60'
@@ -88,15 +103,23 @@ class ArtistController extends Controller
         $artist->update($validated);
 
         return view('artist.show', [
-           'artist' => $artist
+            'artist' => $artist
         ]);
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $artist = Artist::find($id);
+
+        if($artist){
+            $artist->delete();
+        }
+
+        return redirect()->route('artist.index');
     }
 }
