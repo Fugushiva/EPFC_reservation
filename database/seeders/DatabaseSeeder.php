@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ArtistType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +22,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             Artistseeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            TypeSeeder::class,
+            ArtistTypeSeeder::class
         ]);
     }
 }

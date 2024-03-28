@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>{{ $artist->firstname }} - {{ $artist->lastname }}</h1>
+    {{dump($artist->types)}}
     <div><a href="{{ route('artist.edit', $artist->id) }}">Modifier</a></div>
     <form method="post" action="{{ route('artist.delete', $artist->id) }}">
         @csrf

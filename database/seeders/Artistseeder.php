@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class Artistseeder extends Seeder
 {
-  
+
     /**
      * Run the database seeds.
      *
@@ -17,9 +17,13 @@ class Artistseeder extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         //Empty the table first
         Artist::truncate();
-        
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
         //Define data
        $artists = [
             ['firstname'=>'Daniel','lastname'=>'Marcelin'],
@@ -34,7 +38,7 @@ class Artistseeder extends Seeder
             ['firstname'=>'Claude','lastname'=>'Semal'],
             ['firstname'=>'Laurence','lastname'=>'Warin'],
         ];
-        
+
         //Insert data in the table
         DB::table('artists')->insert($artists);
     }
