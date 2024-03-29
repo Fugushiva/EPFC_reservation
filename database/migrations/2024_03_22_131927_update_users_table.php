@@ -16,7 +16,7 @@ return new class extends Migration
             //table->string('name',60)->change()
             $table->renameColumn('name', 'firstname');
 
-            $table->string('lastname', 60)->after('name');
+            $table->string('lastname', 60)->after('name')->nullable();
             $table->string('login', 30)->after('id');
             $table->string('langue', 2);
             $table->enum('role', ['admin', 'member'])->default('member');

@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class ArtistType extends Model
 {
     use HasFactory;
 
     protected $fillable = ['artist_id', 'type_id'];
 
-    protected $table = 'artist_type';
+    protected $table = 'artist_types';
 
     public $timestamps = false;
+
+
 }

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+
 
 @section('title', 'Ajouter un artiste')
 

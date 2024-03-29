@@ -1,28 +1,34 @@
-@extends('layouts.main')
 
-@section('title', 'liste des artistes')
 
-@section('content')
+
+
+
+
+<x-app-layout>
+    <x-slot name="liste">
+       liste
+    </x-slot>
     <h1>liste des {{$ressource}}</h1>
-    <ul>
-        <li><a href="{{ route('artist.create') }}">Ajouter</a></li>
-    </ul>
-    <table>
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($artists as $artist)
+        <ul>
+            <li><a href="{{ route('artist.create') }}">Ajouter</a></li>
+        </ul>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ $artist->firstname }}</td>
-                    <td>
-                        <a href="{{route('artist.show', $artist->id)}}">{{ $artist->lastname }}</a>
-                    </td>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endsection
+            </thead>
+            <tbody>
+                @foreach ($artists as $artist)
+                    <tr>
+                        <td>{{ $artist->firstname }}</td>
+                        <td>
+                            <a href="{{route('artist.show', $artist->id)}}">{{ $artist->lastname }}</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+</x-app-layout>

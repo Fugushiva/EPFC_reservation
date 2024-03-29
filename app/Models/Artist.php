@@ -28,6 +28,11 @@ class Artist extends Model
         return $this->belongsToMany(Type::class);
     }
 
+    public function shows(): BelongsToMany
+    {
+        return $this->belongsToMany(Show::class);
+    }
+
 
 
 }

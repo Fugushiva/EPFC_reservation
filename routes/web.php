@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route pour les artistes
+
 // Route pour afficher la liste des artistes via le contrôleur ArtistController.
 Route::get('/artist', [ArtistController::class, 'index'])
     ->name('artist.index'); // Nomme la route pour référencement facile.
@@ -60,4 +63,28 @@ Route::delete('/artist/{id}/delete', [ArtistController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('artist.delete');
 
+//route pour les shows
+
+Route::get('/show', [ShowController::class, 'index'])
+    ->name('show.index');
+
+Route::get('/show/{id}', [ShowController::class, 'show'])
+    ->where('id', '[0-9]+')
+    ->name('show.show');
+
+Route::get('/show/create', [ShowController::class, 'create'])
+    ->name('show.create');
+Route::post('/show', [ShowController::class, 'store'])
+    ->name('show.store');
+
+Route::get('/show/edit/{id}', [ShowController::class, 'edit'])
+    ->where('id', '[0-9]+')
+    ->name('show.edit');
+Route::put('show/{id}', [ShowController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->name('show.update');
+
+Route::delete('/show/{id}', [ShowController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('show.delete');
 require __DIR__.'/auth.php';

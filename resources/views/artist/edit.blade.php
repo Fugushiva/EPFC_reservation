@@ -1,8 +1,7 @@
-@extends('layouts.main')
-
-@section('title', 'Modifier un artiste')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="modify">
+        modify
+    </x-slot>
     <h2>Modifier un artiste</h2>
     <!--On lui précise que ça devra être la route update qui devra être appelée lors de l'envoi-->
     <form action="{{ route('artist.update', $artist->id) }}" method="post">
@@ -52,4 +51,4 @@
     @endif
 
     <a href="{{ route('artist.index') }}">Retour à l'index</a>
-@endsection
+</x-app-layout>

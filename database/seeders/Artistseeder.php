@@ -19,6 +19,7 @@ class Artistseeder extends Seeder
     {
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
         //Empty the table first
         Artist::truncate();
 
