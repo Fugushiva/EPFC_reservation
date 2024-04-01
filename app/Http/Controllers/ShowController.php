@@ -41,7 +41,7 @@ class ShowController extends Controller
         ]);
 
       //génération auto du slug APD title
-      $slug = str_replace(' ', '_', $validated['title']);
+      $slug = toSlug($validated['title']);
 
       $show = new Show();
 
@@ -102,7 +102,7 @@ class ShowController extends Controller
 
        $show = Show::find($id);
 
-       $show->slug = str_replace(' ', '_', $validated['title']);
+       $show->slug = toSlug($validated['title']);
 
        $show->update($validated);
 

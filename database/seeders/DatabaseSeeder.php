@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeSeeder::class,
             ArtistTypeSeeder::class,
-            ShowSeeder::class
+            ShowSeeder::class,
+            LocationSeeder::class
         ]);
     }
 }

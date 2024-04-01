@@ -16,8 +16,5 @@ class ArtistTypeShow extends Model
 
     public $timestamps = false;
 
-    function shows(): BelongsToMany
-    {
-        return $this->belongsToMany(Show::class);
-    }
+
 }

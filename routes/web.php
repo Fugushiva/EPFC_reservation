@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,4 +88,31 @@ Route::put('show/{id}', [ShowController::class, 'update'])
 Route::delete('/show/{id}', [ShowController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('show.delete');
+
+//location routes
+
+Route::get('/location',[LocationController::class, 'index'])
+    ->name('location.index');
+
+Route::get('/location/{id}', [LocationController::class, 'show'])
+    ->where('id', '[0-9]+')
+    ->name('location.show');
+
+Route::get('/location/create', [LocationController::class, 'create'])
+    ->name('location.create');
+Route::post('/location', [LocationController::class, 'store'])
+    ->name('location.store');
+
+Route::get('/location/edit/{id}', [LocationController::class, 'edit'])
+    ->where('id','[0-9]+')
+    ->name('location.edit');
+Route::put('location/{id}', [LocationController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->name('location.update');
+
+Route::delete('/location/{id}', [LocationController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('location.destroy');
+
+
 require __DIR__.'/auth.php';

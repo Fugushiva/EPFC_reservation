@@ -22,7 +22,7 @@ class ShowSeeder extends Seeder
 
         $dataset = [
             [
-                'slug' => 'vent_au_loin',
+
                 'title' => 'vent au loin',
                 'description' => 'une éloge aux émotions',
                 'poster_url' => 'link cool',
@@ -32,7 +32,7 @@ class ShowSeeder extends Seeder
                 'created_at' => date_create('now')
             ],
             [
-                'slug' => 'vie_des_pistaches',
+
                 'title' => 'La vie des pistaches',
                 'description' => 'Les pistaches dans toutes leur sincérités',
                 'poster_url' => 'link cool',
@@ -42,7 +42,7 @@ class ShowSeeder extends Seeder
                 'created_at' => date_create('now')
             ],
             [
-                'slug' => 'les_mountons_en_bas',
+
                 'title' => "les moutons d'en bas",
                 'description' => "parfois les voisins ne sont pas ce qu'ils sont",
                 'poster_url' => 'link cool',
@@ -52,6 +52,10 @@ class ShowSeeder extends Seeder
                 'created_at' => date_create('now')
             ]
         ];
+
+        foreach($dataset as &$show){
+            $show['slug'] = toSlug($show['title']);
+        }
 
 
         DB::table('shows')->insert($dataset);

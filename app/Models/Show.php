@@ -43,5 +43,10 @@ class Show extends Model
         return $this->belongsTo(Representation::class);
     }
 
+    public function artist():belongsToMany
+    {
+        return $this->belongsToMany(Artist::class);
+    }
+
 
 }
