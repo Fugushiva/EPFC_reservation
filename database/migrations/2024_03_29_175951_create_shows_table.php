@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('poster_url', 255)->nullable();
             $table->boolean('bookable');
-            $table->decimal('price', 10, 2);
+            $table->smallInteger('duration', false, true);
             $table->timestamp('created_at')->nullable();
 
         });

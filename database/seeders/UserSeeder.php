@@ -30,20 +30,18 @@ class UserSeeder extends Seeder
                 'firstname'=>'Bob',
                 'lastname'=>'Sull',
                 'email'=>'bob@sull.com',
-                'password'=>'12345678',
+                'password'=>'epfc',
                 'langue'=>'fr',
                 'created_at'=>'',
-                'role'=>'admin',
             ],
             [
                 'login'=>'anna',
                 'firstname'=>'Anna',
                 'lastname'=>'Lyse',
                 'email'=>'anna.lyse@sull.com',
-                'password'=>'12345678',
+                'password'=>'epfc',
                 'langue'=>'en',
                 'created_at'=>'',
-                'role'=>'member',
             ],
             [
                 'login'=>'jerome',
@@ -53,7 +51,6 @@ class UserSeeder extends Seeder
                 'password'=>'epfc',
                 'langue'=>'fr',
                 'created_at'=>'',
-                'role'=>'admin',
             ]
         ];
 

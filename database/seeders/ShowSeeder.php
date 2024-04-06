@@ -28,7 +28,7 @@ class ShowSeeder extends Seeder
                 'poster_url' => 'link cool',
                 'location_id' => null,
                 'bookable' => true,
-                'price' => 22,
+                'duration' => 40,
                 'created_at' => date_create('now')
             ],
             [
@@ -38,7 +38,7 @@ class ShowSeeder extends Seeder
                 'poster_url' => 'link cool',
                 'location_id' => null,
                 'bookable' => false,
-                'price' => 16,
+                'duration' => 60,
                 'created_at' => date_create('now')
             ],
             [
@@ -48,7 +48,7 @@ class ShowSeeder extends Seeder
                 'poster_url' => 'link cool',
                 'location_id' => null,
                 'bookable' => true,
-                'price' => 30,
+                'duration' => 30,
                 'created_at' => date_create('now')
             ]
         ];

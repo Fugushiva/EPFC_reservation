@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('lastname', 60)->after('name')->nullable();
             $table->string('login', 30)->after('id');
             $table->string('langue', 2);
-            $table->enum('role', ['admin', 'member'])->default('member');
             DB::statement('ALTER TABLE users MODIFY COLUMN `name` VARCHAR(60)');
             $table->unique('login', 'users_login_unique');
         });

@@ -27,9 +27,10 @@ class Representation extends Model
         return $this->hasMany(Location::class);
     }
 
-    public function representationUsers(): BelongsToMany
+    public function reservations(): BelongsToMany
     {
-        return $this->belongsToMany(RepresentationUser::class);
+        return $this->belongsToMany(Reservation::class, 'representation_reservation', 'representation_id', 'reservation_id');
     }
+
 
 }

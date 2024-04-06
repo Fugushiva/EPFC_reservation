@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Show extends Model
@@ -20,7 +21,7 @@ class Show extends Model
             'poster_url',
             'location_id',
             'bookable',
-            'price',
+            'duration',
             'created_at'
         ];
 
@@ -46,6 +47,11 @@ class Show extends Model
     public function artist():belongsToMany
     {
         return $this->belongsToMany(Artist::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
     }
 
 

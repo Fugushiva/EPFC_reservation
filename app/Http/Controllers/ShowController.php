@@ -37,7 +37,7 @@ class ShowController extends Controller
         'title' => ['required', 'string', 'max:60'],
         'description' => ['required', 'string', 'max:2000'],
         'poster_url' => ['nullable', 'url:http,https', 'max:255'],
-        'price' => ['required', 'numeric', 'between:1, 500'],
+        'duration' => ['required', 'numeric'],
         ]);
 
       //génération auto du slug APD title
@@ -50,7 +50,7 @@ class ShowController extends Controller
         $show->slug = $slug;
         $show->description = $validated['description'];
         $show->poster_url = $validated['poster_url'];
-        $show->price = $validated['price'];
+        $show->duration = $validated['duration'];
         $show->created_at = now();
         $show->bookable = true;
 
@@ -94,7 +94,7 @@ class ShowController extends Controller
             'title' => ['required', 'string', 'max:60'],
             'description' => ['required', 'string', 'max:2000'],
             'poster_url' => ['nullable', 'url:http,https', 'max:255'],
-            'price' => ['required', 'numeric', 'between:1, 500'],
+            'duration' => ['required', 'numeric'],
         ]);
 
         //génération auto du slug APD title
