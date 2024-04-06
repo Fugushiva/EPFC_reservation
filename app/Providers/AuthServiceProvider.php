@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Models\Show;
+use App\Policies\ShowPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
@@ -15,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        Show::class => ShowPolicy::class
     ];
 
     /**
@@ -24,13 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('create-artist', function (User $user){
-            return $user->role === 'admin';
+            return $user->roles->contains('role', 'admin');
         });
         Gate::define('update-artist', function (User $user){
-           return $user->role === 'admin';
+           return $user->roles->contains('role','admin');
         });
         Gate::define('delete-artist', function (User $user){
-           return $user->role === 'admin';
+           return $user->roles->contains('role','admin');
         });
     }
 }

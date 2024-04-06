@@ -25,6 +25,8 @@ class ShowController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Show::class);
+
         return view('show.create');
     }
 
@@ -78,6 +80,7 @@ class ShowController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('create', Show::class);
         $show = Show::find($id);
 
         return view('show.edit', [
@@ -119,6 +122,7 @@ class ShowController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('create', Show::class);
         Show::destroy($id);
 
         return redirect()->route('show.index');
