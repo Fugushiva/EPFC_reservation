@@ -27,9 +27,9 @@
                 @enderror
         </div>
         <div>
-            <label for="price">Prix</label>
-            <input type="number" name="price" id="price" class="@error('price') is-invalid @enderror">
-            @error('price')
+            <label for="duration">Durée</label>
+            <input type="number" name="duration" id="duration" class="@error('duration') is-invalid @enderror">
+            @error('duration')
                 <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror
         </div>

@@ -45,14 +45,14 @@
             @enderror
         </div>
         <div>
-            <label for="price">Prix</label>
-            <input type="number" name="price" id="price"
-                   @if(old('title'))
-                       value="{{old('price')}}"
+            <label for="duration">Durée</label>
+            <input type="number" name="duration" id="duration"
+                   @if(old('duration'))
+                       value="{{old('duration')}}"
                    @else
-                       value="{{$show->price}}"
+                       value="{{$show->duration}}"
                    @endif
-                   class="@error('price') text-red-700 @enderror">
+                   class="@error('duration') text-red-700 @enderror">
             @error('price')
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror

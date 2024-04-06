@@ -2,11 +2,12 @@
     <x-slot name="spectacle">
     </x-slot>
     <h1 class="text-2xl">{{$show->title}}</h1>
+    @if($show->poster_url)
+        <img src="{{$show->posterr_url}}">
+    @endif
     <ul class="container flex gap-1">
-        <li>{{$show->price}} €</li>
-        @if($show->bookable)
-            <a class="bg-amber-300 rounded p-1 " href="{{route('show.edit', $show->id)}}">modifier</a>
-        @endif
+        <li>{{$show->duration}} Minutes</li>
+        <a class="bg-amber-300 rounded p-1 " href="{{route('show.edit', $show->id)}}">modifier</a>
     </ul>
     <p class="">{{$show->description}}</p>
 
