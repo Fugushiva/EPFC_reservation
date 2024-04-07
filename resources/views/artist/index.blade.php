@@ -10,7 +10,7 @@
     </x-slot>
     <h1>liste des {{$ressource}}</h1>
         <ul>
-            <li><a href="{{ route('artist.create') }}">Ajouter</a></li>
+            <li><a href="{{ route('artist.create') }}" class="button-validate">Ajouter</a></li>
         </ul>
         <table>
             <thead>

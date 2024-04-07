@@ -31,8 +31,8 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button>Modifier</button>
-        <a href="{{ route('artist.show', $artist->id) }}">Annuler</a>
+        <button class="button-validate">Modifier</button>
+        <a href="{{ route('artist.show', $artist->id) }}" class="button-cancel">Annuler</a>
     </form>
 
     @if ($errors->any())

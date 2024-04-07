@@ -1,8 +1,9 @@
 
 
-@section('title', 'Ajouter un artiste')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="create">
+        create
+    </x-slot>
     <h2>Ajouter un artiste</h2>
     <!--On lui précise que ça devra être la route update qui devra être appelée lors de l'envoi-->
     <form action="{{ route('artist.store') }}" method="post">
@@ -31,8 +32,8 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <button>Ajouter</button>
-        <a href="{{route('artist.index')}}">Annuler</a>
+        <button class="button-validate">Ajouter</button>
+        <a href="{{route('artist.index')}}" class="button-cancel">Annuler</a>
     </form>
 
     @if($errors->any())
@@ -46,5 +47,6 @@
         </div>
     @endif
 
+
     <a href="{{ route('artist.index') }}">Retour à l'index</a>
-@endsection
+</x-app-layout>

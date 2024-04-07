@@ -29,8 +29,10 @@
 
             <!-- Page Content -->
 
-            <main>
-                {{ $slot }}
+            <se class="container">
+                <section>
+                    {{ $slot }}
+                </section>
             </main>
 
         </div>
