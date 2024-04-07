@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Show;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class ShowController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $shows = Show::all();
+        $user = $request->user() ? User::find($request->user()->id) : null;
+
 
         return view('show.index', [
             'shows' => $shows,
+            'user' => $user,
             'ressources' => 'spectacles'
         ]);
     }
@@ -65,13 +70,16 @@ class ShowController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, Request $request)
 
     {
         $show = Show::find($id);
+        $user = User::find($request->user()->id);
+
 
         return view('show.show', [
-           'show' => $show
+           'show' => $show,
+           'user' => $user
         ]);
     }
 

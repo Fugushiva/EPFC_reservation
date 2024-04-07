@@ -35,9 +35,11 @@
             </tbody>
         </table>
     </div>
-    <ul class="mt-4">
-        <li>
-            <a href="{{ route('artist.create') }}" class="button-validate">Ajouter un artiste</a>
-        </li>
-    </ul>
+    @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
+        <ul class="mt-4">
+            <li>
+                <a href="{{ route('artist.create') }}" class="button-validate">Ajouter un artiste</a>
+            </li>
+        </ul>
+    @endif
 </x-app-layout>
