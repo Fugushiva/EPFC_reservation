@@ -58,8 +58,8 @@
             @enderror
         </div>
         <div class="container flex gap-1"></div>
-        <button class="bg-green-500 rounded w-fit">Mise à jour</button>
-        <a href="{{route('show.show', $show->id)}}" class="bg-red-600 rounded w-fit" >Annuler</a>
+        <button class="button-validate">Mise à jour</button>
+        <a href="{{route('show.show', $show->id)}}" class="button-cancel" >Annuler</a>
 
         @if($errors->any())
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">

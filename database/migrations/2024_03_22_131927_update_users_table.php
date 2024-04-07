@@ -32,7 +32,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table){
             $table->dropUnique('users_login_unique');
 
-            $table->dropColumn(['role', 'langue', 'login', 'lastname']);
+            $table->dropColumn(['langue', 'login', 'lastname']);
             $table->string('firstname', 255)->change();
             $table->renameColumn('firstname', 'name');
         });

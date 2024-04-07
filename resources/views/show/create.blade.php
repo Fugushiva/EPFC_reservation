@@ -36,8 +36,8 @@
 
 
 
-        <button class="bg-green-500 p-1 rounded mt-2">Ajouter</button>
-        <a href="{{ route('show.index') }}">Retour à l'index</a>
+        <button class="button-validate">Ajouter</button>
+        <a href="{{ route('show.index') }}" class="button-cancel">Retour à l'index</a>
 
     </form>
 
