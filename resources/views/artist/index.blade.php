@@ -1,34 +1,45 @@
-
-
-
-
-
-
 <x-app-layout>
     <x-slot name="liste">
-       liste
+        liste
     </x-slot>
-    <h1>liste des {{$ressource}}</h1>
-        <ul>
-            <li><a href="{{ route('artist.create') }}">Ajouter</a></li>
-        </ul>
-        <table>
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                </tr>
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Liste des {{ $ressource }}</h1>
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Prénom
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Nom
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                </th>
+            </tr>
             </thead>
-            <tbody>
-                @foreach ($artists as $artist)
-                    <tr>
-                        <td>{{ $artist->firstname }}</td>
-                        <td>
-                            <a href="{{route('artist.show', $artist->id)}}">{{ $artist->lastname }}</a>
-                        </td>
-                    </tr>
-                @endforeach
+            <tbody class="bg-white divide-y divide-gray-200">
+            @foreach ($artists as $artist)
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ $artist->firstname }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ $artist->lastname }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="{{ route('artist.show', $artist->id) }}" class="text-indigo-600 hover:text-indigo-900">Voir</a>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-
+    </div>
+    @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
+        <ul class="mt-4">
+            <li>
+                <a href="{{ route('artist.create') }}" class="button-validate">Ajouter un artiste</a>
+            </li>
+        </ul>
+    @endif
 </x-app-layout>

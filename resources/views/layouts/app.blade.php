@@ -29,9 +29,12 @@
 
             <!-- Page Content -->
 
-            <main>
-                {{ $slot }}
+            <main class="flex justify-center items-center min-h-screen">
+                <section class="container flex flex-col justify-center items-center">
+                    {{ $slot }}
+                </section>
             </main>
+
 
         </div>
     </body>

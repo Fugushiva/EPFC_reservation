@@ -12,7 +12,7 @@ class Location extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug','designation', 'address', 'locality_id', 'website', 'phone'];
+    protected $fillable = ['slug','designation', 'address', 'locality_id', 'website', 'phone', 'picture_url'];
 
     protected $table = 'locations';
 
