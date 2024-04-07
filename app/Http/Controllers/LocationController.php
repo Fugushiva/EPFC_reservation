@@ -39,8 +39,9 @@ class LocationController extends Controller
             [
                 'designation' => ['required', 'string', 'max:60'],
                 'address' => ['required', 'string', 'max:255'],
-                'website' => ['nullable','url:http,https', 'max:255'],
-                'phone' => ['required', "regex:/$phoneRegex/", 'max:30']
+                'website' => ['required','url:http,https', 'max:255'],
+                'phone' => ['required', "regex:/$phoneRegex/", 'max:30'],
+                'picture_url' => ['required','url:http,https', 'max:1000'],
             ]
         );
 
@@ -51,6 +52,7 @@ class LocationController extends Controller
         $location->address = $validated['address'];
         $location->website = $validated['website'];
         $location->phone = $validated['phone'];
+        $location->picture_url = $validated['picture_url'];
 
         $location->save();
 
@@ -93,7 +95,8 @@ class LocationController extends Controller
                 'designation' => ['required', 'string', 'max:60'],
                 'address' => ['required', 'string', 'max:255'],
                 'website' => ['nullable','url:http,https', 'max:255'],
-                'phone' => ['required', "regex:/$phoneRegex/", 'max:30']
+                'phone' => ['required', "regex:/$phoneRegex/", 'max:30'],
+                'picture_url' => ['required','url:http,https', 'max:1000'],
             ]
         );
 

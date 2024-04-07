@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Location;
+
 class LocationSeeder extends Seeder
 {
     /**
@@ -23,34 +24,45 @@ class LocationSeeder extends Seeder
 
         $dataset = [
             [
-                'designation' => 'Bruxelles',
-                'address' => 'Rue des lauriers 255',
-                'phone' => '0697854214'
+                'designation' => 'Forest National',
+                'address' => 'Av. Victor Rousseau 208, 1190 Forest',
+                'phone' => '034006970',
+                'website' => 'https://www.forest-national.be/',
+                'picture_url' => 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.6435-9/66702105_10157209420509647_8469109817569443840_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=j5BRludKBGQAb65sfLT&_nc_ht=scontent-bru2-1.xx&oh=00_AfBwR8eDJbBZIosyySKtHdFRc89uTmeNBgD994vecvKK-w&oe=663A25CB'
+
             ],
             [
-                'designation' => 'Liège',
-                'address' => 'Avenue des templiers',
-                'phone' => '025657815228'
+                'designation' => 'Ancienne Belgique',
+                'address' => 'Bd Anspach 110, 1000 Bruxelles',
+                'phone' => '02 548 24 84',
+                'website' => 'https://www.abconcerts.be/fr/',
+                'picture_url' => 'https://jazzmania.be/wp-content/uploads/2020/10/Photo-AB.jpg'
             ],
             [
-                'designation' => 'Namur',
-                'address' => "Place d'arme",
-                'phone' => '028974522145'
+                'designation' => 'Botanique',
+                'address' => "Jardin botanique de Bruxelles",
+                'phone' => '+32(2)218 37 32',
+                'website' => 'https://botanique.be/fr',
+                'picture_url' => 'https://arkadia.be/sites/default/files/styles/w1440/public/2023-07/Botanique_03.JPG.webp?itok=Gul5rVBk'
             ],
             [
-                'designation' => 'Bruxelles',
-                'address' => "Place des arts",
-                'phone' => '02654855214'
+                'designation' => 'Palais des Beaux-Arts',
+                'address' => "Pl. du manège",
+                'phone' => '071321212',
+                'website' => 'https://www.pba.be/',
+                'picture_url' => 'https://upload.wikimedia.org/wikipedia/commons/7/72/Charleroi_-_Palais_des_Beaux-Arts_-_2023-08-07_-_01.jpg'
             ],
             [
-            'designation' => 'Grand duç é l@ où',
-            'address' => "Place des arts",
-            'phone' => '02654855214'
-        ]
+                'designation' => 'Le Forum',
+                'address' => " Rue Pont d'Avroy 12/14, 4000 Liège",
+                'phone' => '04 223 18 18',
+                'website' => 'https://www.leforum.be/',
+                'picture_url' => 'https://www.lavenir.net/resizer/aug1aDn_NIiUlvS30fgUMv667Oo=/768x512/filters:format(jpeg):focal(544.5x371.5:554.5x361.5)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/46KKQNEF2BB5XKKE3K5YNX2CWU.jpg'
+            ]
 
         ];
 
-        foreach($dataset as &$data){
+        foreach ($dataset as &$data) {
             $data['slug'] = toSlug($data['designation']);
         }
 

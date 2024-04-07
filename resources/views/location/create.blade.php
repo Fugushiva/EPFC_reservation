@@ -2,49 +2,52 @@
     <x-slot name="create">
         create
     </x-slot>
-    <h1 class="text-3xl">Ajouter une salle</h1>
-    <form method="post" , action="{{route('location.store')}}">
-        @csrf
-        <div>
-            <label for="designation">nom</label>
-            <input type="text" name="designation" id="designation" class="@error('designation') text-red-700 @enderror">
-            @error('designation')
-            <div class="bg-red-600 rounded w-fit">{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="address">Adresse</label>
-            <input type="text" id="address" name="address" class="@error('address') text-red-700 @enderror">
-            @error('designation')
-            <div class="bg-red-600 rounded w-fit">{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="website">Site web</label>
-            <input type="text" name="website" id="website" class="@error('website') text-red-700 @enderror">
-            @error("website")
-            <div class="bg-red-600 rounded w-fit">{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="phone">Numéro de téléphone</label>
-            <input type="text" name="phone" id="phone" class="@error('phone') text-red-700 @enderror">
-            @error('phone')
-            <div class="bg-red-600 rounded w-fit">{{$message}}</div>
-            @enderror
-        </div>
-        <div class="container flex gap-2">
-            <button class="bg-green-500 rounded w-fit p-1">créer</button>
-            <a class="bg-red-600 rounded w-fit p-1 text-white" href="{{route('location.index')}}">retour à l'index</a>
-        </div>
-    </form>
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Ajouter une salle</h1>
+        <form method="post" action="{{ route('location.store') }}" class="space-y-4">
+            @csrf
+            <div>
+                <label for="designation" class="block text-sm font-medium text-gray-700">Nom</label>
+                <input type="text" name="designation" id="designation" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('designation') border-red-500 @enderror">
+                @error('designation')
+                <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                <input type="text" id="address" name="address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('address') border-red-500 @enderror">
+                @error('address')
+                <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <label for="website" class="block text-sm font-medium text-gray-700">Site web</label>
+                <input type="text" name="website" id="website" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('website') border-red-500 @enderror">
+                @error('website')
+                <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
+                <input type="text" name="phone" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('phone') border-red-500 @enderror">
+                @error('phone')
+                <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <label for="picture_url" class="block text-sm font-medium text-gray-700">URL de l'image</label>
+                <input type="text" name="picture_url" id="picture_url" oninput="updateImagePreview(this.value)" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('picture_url') border-red-500 @enderror">
+                @error('picture_url')
+                <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
+                @enderror
+            </div>
+            @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
+                <div class="flex gap-4">
+                    <button type="submit" class="button-validate">Créer</button>
+                    <a href="{{ route('location.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Retour à l'index</a>
+                </div>
+            @endif
+        </form>
+    </div>
 
-    @if($errors->any())
-        <div>
-            <h2 class="text-2xl text-red-700"></h2>
-            @foreach($errors as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </div>
-    @endif
 </x-app-layout>

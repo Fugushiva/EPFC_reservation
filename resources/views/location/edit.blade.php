@@ -2,70 +2,61 @@
     <x-slot name="edit">
         edit
     </x-slot>
-    <form action="{{route('location.update', $location->id)}}" method="post">
-        @csrf
-        @method('PUT')
+    <div class="max-w-4xl mx-auto p-8">
+        <form action="{{route('location.update', $location->id)}}" method="post" class="space-y-6">
+            @csrf
+            @method('PUT')
 
-        <div>
-            <label for="designation">Salle</label>
-            <input type="text" name="designation" id="designation" class="@error('designation') text-red-700 @enderror"
-                   @if(old('designation'))
-                       value="{{old('designation')}}"
-                   @else
-                       value="{{$location->designation}}"
-                   @endif>
-            @error('designation')
-            <div class="g-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="address">Adresse</label>
-            <input type="text" name="address" id="address" class="@error("address") text-red-700 @enderror"
-                   @if(old('address'))
-                       value="{{old('address')}}"
-                   @else
-                       value="{{$location->address}}"
-                   @endif>
-            @error('address')
-            <div class="g-red-500 text-white p-4 rounded-lg w-fit">{{$location->address}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="website">Site web</label>
-            <input type="text" name="website" id="website" class="@error("website") text-red-700 @enderror"
-                   @if(old('website'))
-                       value="{{old('website')}}"
-                   @else
-                       value="{{$location->website}}"
-                   @endif>
-            @error('website')
-                <div class="g-red-500 text-white p-4 rounded-lg w-fit">{{$location->website}}</div>
-            @enderror
-        </div>
-        <div>
-            <label for="phone">Numéro de téléphone</label>
-            <input type="text" name="phone" id="phone" class="@error("phone") text-red-700 @enderror"
-                   @if(old('phone'))
-                       value="{{old('website')}}"
-                   @else
-                       value="{{$location->phone}}"
-                   @endif>
-            @error('phone')
-                <div class="g-red-500 text-white p-4 rounded-lg w-fit">{{$location->phone}}</div>
-            @enderror
-        </div>
-        <div class="container flex gap-2">
-            <button class="bg-green-500 w-fit p-1 rounded ">Mettre à jour</button>
-            <a href="{{route('location.show', $location->id)}}">annuler</a>
-        </div>
-    </form>
+            <div>
+                <label for="designation" class="block text-sm font-medium text-gray-700">Salle</label>
+                <input type="text" name="designation" id="designation" value="{{ old('designation', $location->designation) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('designation') border-red-500 @enderror">
+                @error('designation')
+                <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
+                @enderror
+            </div>
 
-    @if($errors->any())
-        <div>
-            <h2 class="text-2xl text-red-700">Liste des erreurs</h2>
-            @foreach($errors as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </div>
-    @endif
+            <div>
+                <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                <input type="text" name="address" id="address" value="{{ old('address', $location->address) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('address') border-red-500 @enderror">
+                @error('address')
+                <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="website" class="block text-sm font-medium text-gray-700">Site web</label>
+                <input type="text" name="website" id="website" value="{{ old('website', $location->website) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('website') border-red-500 @enderror">
+                @error('website')
+                <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
+                <input type="text" name="phone" id="phone" value="{{ old('phone', $location->phone) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('phone') border-red-500 @enderror">
+                @error('phone')
+                <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="image_url" class="block text-sm font-medium text-gray-700">URL de l'image</label>
+                <input type="text" name="image_url" id="image_url" oninput="updateImagePreview(this.value)" value="{{ old('image_url', $location->image_url) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('image_url') border-red-500 @enderror">
+                @error('image_url')
+                <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
+                @enderror
+                <img id="imagePreview" src="{{ asset($location->picture_url) }}" alt="Aperçu de l'image" class="mt-4 h-48 w-full object-cover">
+            </div>
+
+            <div class="flex gap-4">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Mettre à jour</button>
+                <a href="{{route('location.show', $location->id)}}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Annuler</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function updateImagePreview(value) {
+            document.getElementById('imagePreview').src = value;
+        }
+    </script>
 </x-app-layout>

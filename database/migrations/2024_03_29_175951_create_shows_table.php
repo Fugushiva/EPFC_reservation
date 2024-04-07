@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug', 60);
             $table->string('title', 60);
             $table->text('description');
-            $table->string('poster_url', 255)->nullable();
+            $table->string('poster_url', 1000)->nullable();
             $table->boolean('bookable');
             $table->smallInteger('duration', false, true);
             $table->timestamp('created_at')->nullable();

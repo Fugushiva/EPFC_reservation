@@ -19,8 +19,8 @@
 
     @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
         <div class="my-6 text-center">
-            <a href="{{ route('show.create') }}" class="button-validate">
-                Ajouter un nouveau spectacle
+            <a href="{{ route('show.edit', $show->id) }}" class="button-modify">
+                modifier
             </a>
         </div>
     @endif

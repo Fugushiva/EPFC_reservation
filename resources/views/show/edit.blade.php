@@ -32,8 +32,8 @@
             @enderror
         </div>
         <div>
-            <label for="link" class="block text-sm font-medium text-gray-700">Lien</label>
-            <input type="text" name="link" id="link"
+            <label for="poster_url" class="block text-sm font-medium text-gray-700">image</label>
+            <input type="text" name="poster_url" id="poster_url" oninput="updateImagePreview(this.value)"
                    @if(old('title'))
                        value="{{old('poster_url')}}"
                    @else
@@ -43,6 +43,7 @@
             @error('poster_url')
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror
+            <img id="poster_url" src="{{ asset($show->poster_url) }}" alt="Aperçu de l'image" class="mt-4 h-48 w-full object-cover">
         </div>
         <div>
             <label for="duration" class="block text-sm font-medium text-gray-700">Durée</label>
@@ -57,6 +58,7 @@
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror
         </div>
+
         <div class="container flex gap-1"></div>
         <button class="button-validate">Mise à jour</button>
         <a href="{{route('show.show', $show->id)}}" class="button-cancel" >Annuler</a>
@@ -72,4 +74,10 @@
             </div>
         @endif
     </form>
+
+    <script>
+        function updateImagePreview(value) {
+            document.getElementById('imagePreview').src = value;
+        }
+    </script>
 </x-app-layout>
