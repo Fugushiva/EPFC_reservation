@@ -153,7 +153,7 @@ class ArtistController extends Controller
         }
 
         return view('artist.index', [
-            'ressource' => 'artistes',
+            'ressource' => 'artists',
             'artists' => $artists,
         ]);
 
