@@ -34,6 +34,29 @@ class Artist extends Model
         return $this->hasMany(Show::class);
     }
 
+    /**
+     * @param $query string la query de la db
+     * @param $firstname string l'élément recherché
+     * @return mixed
+     */
+    public function scopeWithFirstname($query, $firstname)
+    {
+        //Si il y a un firstname alors si un prénom existe avec cette chaîne
+        if(!empty($firstname)){
+            return $query->where('firstname', 'LIKE', "%{$firstname}%");
+        }
+
+        return $query;
+    }
+
+    public function scopeWithLastname($query,$lastname)
+    {
+        if(!empty($lastname)){
+            return $query->where('lastname', 'LIKE', "%{$lastname}%");
+        }
+        return $query;
+    }
+
 
 
 }

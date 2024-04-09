@@ -2,6 +2,9 @@
     <x-slot name="liste">
         liste
     </x-slot>
+    <x-search-artist-form>
+
+    </x-search-artist-form>
     <h1 class="text-3xl font-bold text-gray-900 mb-4">Liste des {{ $ressource }}</h1>
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">

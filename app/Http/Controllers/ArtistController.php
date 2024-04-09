@@ -139,4 +139,23 @@ class ArtistController extends Controller
 
         return redirect()->route('artist.index');
     }
+
+    public function search(Request $request)
+    {
+        $artists = null;
+        if($request) {
+            $firstname = $request->input('firstname');
+            $lastname = $request->input('lastname');
+            $artists = Artist::withFirstname($firstname)->withLastname($lastname)->get();
+
+
+
+        }
+
+        return view('artist.index', [
+            'ressource' => 'artistes',
+            'artists' => $artists,
+        ]);
+
+    }
 }

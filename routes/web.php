@@ -62,6 +62,8 @@ Route::delete('/artist/{id}/delete', [ArtistController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('artist.delete');
 
+Route::post('/artist/search', [ArtistController::class, 'search'])
+    ->name('artist.search');
 //route pour les shows
 
 Route::get('/show', [ShowController::class, 'index'])
@@ -111,6 +113,7 @@ Route::put('location/{id}', [LocationController::class, 'update'])
 Route::delete('/location/{id}', [LocationController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('location.destroy');
+
 
 
 require __DIR__.'/auth.php';
