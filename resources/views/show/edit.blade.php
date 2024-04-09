@@ -13,14 +13,14 @@
             @else
                 value="{{$show->title}}"
             @endif
-            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500  @error('title') text-red-500 @enderror">
+            class="input-text  @error('title') text-red-500 @enderror">
             @error('title')
                 <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror
         </div>
         <div>
             <label for="description" class="block text-sm font-medium text-gray-700">Desription</label>
-            <textarea id="description" name="description" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('description') text-red-700 @enderror">
+            <textarea id="description" name="description" class="input-text @error('description') text-red-700 @enderror">
                 @if(old('description'))
                     {{old('description')}}
                 @else
@@ -39,7 +39,7 @@
                    @else
                        value="{{$show->poster_url}}"
                    @endif
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('poster_url') text-red-700 @enderror">
+                   class="input-text @error('poster_url') text-red-700 @enderror">
             @error('poster_url')
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror
@@ -53,7 +53,7 @@
                    @else
                        value="{{$show->duration}}"
                    @endif
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('duration') text-red-700 @enderror">
+                   class="input-text @error('duration') text-red-700 @enderror">
             @error('price')
             <div class="bg-red-500 text-white p-4 rounded-lg w-fit">{{$message}}</div>
             @enderror

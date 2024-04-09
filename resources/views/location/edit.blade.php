@@ -9,7 +9,7 @@
 
             <div>
                 <label for="designation" class="block text-sm font-medium text-gray-700">Salle</label>
-                <input type="text" name="designation" id="designation" value="{{ old('designation', $location->designation) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('designation') border-red-500 @enderror">
+                <input type="text" name="designation" id="designation" value="{{ old('designation', $location->designation) }}" class="input-text @error('designation') border-red-500 @enderror">
                 @error('designation')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror
@@ -17,7 +17,7 @@
 
             <div>
                 <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
-                <input type="text" name="address" id="address" value="{{ old('address', $location->address) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('address') border-red-500 @enderror">
+                <input type="text" name="address" id="address" value="{{ old('address', $location->address) }}" class="input-text @error('address') border-red-500 @enderror">
                 @error('address')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror
@@ -25,7 +25,7 @@
 
             <div>
                 <label for="website" class="block text-sm font-medium text-gray-700">Site web</label>
-                <input type="text" name="website" id="website" value="{{ old('website', $location->website) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('website') border-red-500 @enderror">
+                <input type="text" name="website" id="website" value="{{ old('website', $location->website) }}" class="input-text @error('website') border-red-500 @enderror">
                 @error('website')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror
@@ -33,7 +33,7 @@
 
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
-                <input type="text" name="phone" id="phone" value="{{ old('phone', $location->phone) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('phone') border-red-500 @enderror">
+                <input type="text" name="phone" id="phone" value="{{ old('phone', $location->phone) }}" class="input-text @error('phone') border-red-500 @enderror">
                 @error('phone')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror
@@ -41,7 +41,7 @@
 
             <div>
                 <label for="image_url" class="block text-sm font-medium text-gray-700">URL de l'image</label>
-                <input type="text" name="image_url" id="image_url" oninput="updateImagePreview(this.value)" value="{{ old('image_url', $location->image_url) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('image_url') border-red-500 @enderror">
+                <input type="text" name="image_url" id="image_url" oninput="updateImagePreview(this.value)" value="{{ old('image_url', $location->image_url) }}" class="input-text @error('image_url') border-red-500 @enderror">
                 @error('image_url')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror

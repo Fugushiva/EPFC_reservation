@@ -8,28 +8,28 @@
             @csrf
             <div>
                 <label for="designation" class="block text-sm font-medium text-gray-700">Nom</label>
-                <input type="text" name="designation" id="designation" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('designation') border-red-500 @enderror">
+                <input type="text" name="designation" id="designation" class="input-text @error('designation') border-red-500 @enderror">
                 @error('designation')
                 <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
-                <input type="text" id="address" name="address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('address') border-red-500 @enderror">
+                <input type="text" id="address" name="address" class="input-text @error('address') border-red-500 @enderror">
                 @error('address')
                 <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <label for="website" class="block text-sm font-medium text-gray-700">Site web</label>
-                <input type="text" name="website" id="website" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('website') border-red-500 @enderror">
+                <input type="text" name="website" id="website" class="input-text @error('website') border-red-500 @enderror">
                 @error('website')
                 <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
                 @enderror
             </div>
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
-                <input type="text" name="phone" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('phone') border-red-500 @enderror">
+                <input type="text" name="phone" id="phone" class="input-text @error('phone') border-red-500 @enderror">
                 @error('phone')
                 <div class="mt-1 text-sm text-white bg-red-600 rounded p-2">{{$message}}</div>
                 @enderror

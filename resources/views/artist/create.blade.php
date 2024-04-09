@@ -7,7 +7,7 @@
         <div>
             <label for="firstname" class="block text-sm font-medium text-gray-700">Prénom</label>
             <input id="firstname" type="text" name="firstname" value="{{ old('firstname') }}"
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('firstname') border-red-500 @enderror">
+                   class="input-text @error('firstname') border-red-500 @enderror">
             @error('firstname')
             <div class="mt-1 text-sm text-red-600">{{ $message }}</div>
             @enderror
@@ -16,7 +16,7 @@
         <div>
             <label for="lastname" class="block text-sm font-medium text-gray-700">Nom</label>
             <input id="lastname" type="text" name="lastname" value="{{ old('lastname') }}"
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('lastname') border-red-500 @enderror">
+                   class="input-text @error('lastname') border-red-500 @enderror">
             @error('lastname')
             <div class="mt-1 text-sm text-red-600">{{ $message }}</div>
             @enderror

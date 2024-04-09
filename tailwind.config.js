@@ -1,6 +1,7 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 import {buttons} from "./resources/js/buttonsStyle.js"
+import {inputs} from "./resources/js/formStyle.js"
 
 
 /** @type {import("tailwindcss").Config} */
@@ -22,7 +23,9 @@ export default {
     plugins: [
         forms,
         function({addComponents}){
-            addComponents(buttons)
-        }
+            addComponents(buttons);
+            addComponents(inputs);
+        },
+
     ]
 };

@@ -1,0 +1,16 @@
+module.exports = {
+    inputs:{
+        '.input-text':{
+            display: 'block',
+            marginTop: '.25rem',
+            borderRadius: '.375rem',
+            borderColor: '#D1D5DB',
+            width: '100%',
+            boxShadow : '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            '&:focus':{
+                borderColor: '#6366f1',
+                ringColor: '#6366f1',
+            }
+        }
+    }
+}

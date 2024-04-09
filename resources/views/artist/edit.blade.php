@@ -9,15 +9,16 @@
         <div>
             <label for="firstname" class="block text-sm font-medium text-gray-700">Prénom</label>
             <input id="firstname" type="text" name="firstname" value="{{ old('firstname', $artist->firstname) }}"
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('firstname') border-red-500 @enderror">
-            @error('firstname')
+                   class="input-text @error('firstname') border-red-500 @enderror">
+            @error('firstname')$
+
             <div class="text-red-500">{{ $message }}</div>
             @enderror
         </div>
         <div>
             <label for="lastname" class="block text-sm font-medium text-gray-700">Nom</label>
             <input id="lastname" type="text" name="lastname" value="{{ old('lastname', $artist->lastname) }}"
-                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 @error('lastname') border-red-500 @enderror">
+                   class="input-text @error('lastname') border-red-500 @enderror">
             @error('lastname')
             <div class="text-red-500">{{ $message }}</div>
             @enderror
