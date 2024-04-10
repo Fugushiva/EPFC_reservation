@@ -89,6 +89,9 @@ Route::delete('/show/{id}', [ShowController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('show.delete');
 
+Route::post('/show/search', [ShowController::class,'search'])
+    ->name('show.search');
+
 //location routes
 
 Route::get('/location',[LocationController::class, 'index'])

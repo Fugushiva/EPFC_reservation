@@ -135,4 +135,21 @@ class ShowController extends Controller
 
         return redirect()->route('show.index');
     }
+
+    public function search(Request $request)
+    {
+        $title = $request->input('title');
+        $duration = $request->input('duration');
+        $bookable =  $request->input('bookable');
+
+
+
+        $shows = Show::withTitle($title)->withDuration($duration)->isBookable($bookable)->get();
+
+        return view('show.index', [
+            'shows'=> $shows,
+            'ressources'=> 'spectacles'
+        ]);
+
+    }
 }

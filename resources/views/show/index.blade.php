@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-slot name="index">index</x-slot>
+    <x-search-show-form>
 
+    </x-search-show-form>
     <h1 class="text-3xl font-bold text-gray-800 my-6 text-center">Liste de nos spectacles</h1>
 
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -21,7 +23,7 @@
         @endforeach
     </div>
 
-    @if($user && $user->roles->contains('role', 'admin'))
+    @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
         <div class="my-6 text-center">
             <a href="{{ route('show.create') }}" class="button-validate">
                 Ajouter un nouveau spectacle

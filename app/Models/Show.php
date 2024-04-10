@@ -54,5 +54,28 @@ class Show extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function scopeWithTitle($query,$title)
+    {
+        if(!empty($title)){
+            return $query->where('title', 'LIKE', "%{$title}%");
+        }
+        return $query;
+    }
 
+    public function scopeWithDuration($query, $duration)
+    {
+        if(!empty($duration)){
+            return $query->where('duration', 'LIKE', "{$duration}");
+        }
+        return $query;
+    }
+
+    public function scopeIsBookable($query, $bookable)
+    {
+        if(!empty($bookable)){
+            $bookableValue = $bookable == 'on' ? 1 : 0;
+            return $query->where('bookable', $bookableValue);
+        }
+        return $query;
+    }
 }
