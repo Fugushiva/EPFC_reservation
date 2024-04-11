@@ -74,12 +74,12 @@ class ShowController extends Controller
 
     {
         $show = Show::find($id);
-        $user = User::find($request->user()->id);
+
+
 
 
         return view('show.show', [
            'show' => $show,
-           'user' => $user
         ]);
     }
 

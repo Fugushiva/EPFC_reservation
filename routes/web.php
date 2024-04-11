@@ -117,6 +117,9 @@ Route::delete('/location/{id}', [LocationController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('location.destroy');
 
+Route::post('/location/search', [LocationController::class, 'search'])
+    ->name('location.search');
+
 
 
 require __DIR__.'/auth.php';

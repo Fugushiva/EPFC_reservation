@@ -32,4 +32,29 @@ class Location extends Model
     {
         return $this->hasMany(Locality::class);
     }
+
+    public function scopeWithDesignation($query ,$designation)
+    {
+        if(!empty($designation)){
+            return $query->where('designation', 'LIKE', "%{$designation}%");
+        }
+        return $query;
+    }
+
+    public function scopeWithAddress($query, $address)
+    {
+        if(!empty($address)){
+            return $query->where('address', 'LIKE', "%{$address}%");
+        }
+        return $query;
+    }
+
+    public function scopeWithPostcode($query, $postcode)
+    {
+        if(!empty($postcode)) {
+            return $query->where('address', 'regexp', ".*,\s*" . $postcode . "\s+[a-zA-Z].*");
+        }
+        return $query;
+    }
+
 }

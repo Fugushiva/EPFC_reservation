@@ -121,4 +121,19 @@ class LocationController extends Controller
 
         return redirect()->route('location.index');
     }
+
+    public function search(Request $request)
+    {
+       $designation = $request->input('designation');
+       $address = $request->input('address');
+       $postcode = $request->input('postcode');
+
+       $locations = Location::withDesignation($designation)
+           ->withAddress($address)
+           ->withPostcode($postcode)
+           ->get();
+        return view('location.index', [
+            'locations' => $locations
+        ]);
+    }
 }

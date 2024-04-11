@@ -2,6 +2,9 @@
     <x-slot name="index">
         index
     </x-slot>
+    <x-search-location-form>
+
+    </x-search-location-form>
     <h1 class="text-3xl font-bold text-center my-8">Nos salles partenaires</h1>
 
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
