@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
-            $table->string('slug', 60);
             $table->string('title', 60);
+            $table->string('slug', 60);
             $table->text('description');
             $table->string('poster_url', 1000)->nullable();
             $table->boolean('bookable');

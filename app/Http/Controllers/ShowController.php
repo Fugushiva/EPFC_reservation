@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Show;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreShowRequest;
 
 
 class ShowController extends Controller
@@ -38,30 +39,14 @@ class ShowController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Show $show)
+    public function store(StoreShowRequest $request)
     {
-      $validated = $request->validate([
-        'title' => ['required', 'string', 'max:60'],
-        'description' => ['required', 'string', 'max:2000'],
-        'poster_url' => ['nullable', 'url:http,https', 'max:255'],
-        'duration' => ['required', 'numeric'],
-        ]);
+        $validated = $request->validated();
 
-      //génération auto du slug APD title
-      $slug = toSlug($validated['title']);
-
-      $show = new Show();
-
-      //validation des données
-        $show->title = $validated['title'];
-        $show->slug = $slug;
-        $show->description = $validated['description'];
-        $show->poster_url = $validated['poster_url'];
-        $show->duration = $validated['duration'];
-        $show->created_at = now();
-        $show->bookable = true;
+        $show = Show::create($validated);
 
         $show->save();
+
 
         return redirect()->route('show.index');
     }
@@ -76,10 +61,8 @@ class ShowController extends Controller
         $show = Show::find($id);
 
 
-
-
         return view('show.show', [
-           'show' => $show,
+            'show' => $show,
         ]);
     }
 
@@ -99,28 +82,17 @@ class ShowController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(StoreShowRequest $request, $id)
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:60'],
-            'description' => ['required', 'string', 'max:2000'],
-            'poster_url' => ['nullable', 'url:http,https', 'max:255'],
-            'duration' => ['required', 'numeric'],
+        $validated = $request->validated();
+
+        $show = Show::find($id);
+
+        $show->update($validated);
+
+        return view('show.show', [
+            'show' => $show
         ]);
-
-        //génération auto du slug APD title
-
-
-       $show = Show::find($id);
-
-       $show->slug = toSlug($validated['title']);
-
-       $show->update($validated);
-
-       return view('show.show', [
-           'show' => $show
-       ]);
-
 
 
     }
@@ -140,15 +112,14 @@ class ShowController extends Controller
     {
         $title = $request->input('title');
         $duration = $request->input('duration');
-        $bookable =  $request->input('bookable');
-
+        $bookable = $request->input('bookable');
 
 
         $shows = Show::withTitle($title)->withDuration($duration)->isBookable($bookable)->get();
 
         return view('show.index', [
-            'shows'=> $shows,
-            'ressources'=> 'spectacles'
+            'shows' => $shows,
+            'ressources' => 'spectacles'
         ]);
 
     }

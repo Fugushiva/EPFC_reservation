@@ -40,18 +40,28 @@
             </div>
 
             <div>
-                <label for="image_url" class="block text-sm font-medium text-gray-700">URL de l'image</label>
-                <input type="text" name="image_url" id="image_url" oninput="updateImagePreview(this.value)" value="{{ old('image_url', $location->image_url) }}" class="input-text @error('image_url') border-red-500 @enderror">
-                @error('image_url')
+                <label for="picture_url" class="block text-sm font-medium text-gray-700">URL de l'image</label>
+                <input type="text" name="picture_url" id="picture_url" oninput="updateImagePreview(this.value)" value="{{ old('picture_url', $location->picture_url) }}" class="input-text @error('picture_url') border-red-500 @enderror">
+                @error('picture_url')
                 <div class="text-sm text-white bg-red-500 p-2 rounded-lg mt-2">{{$message}}</div>
                 @enderror
                 <img id="imagePreview" src="{{ asset($location->picture_url) }}" alt="Aperçu de l'image" class="mt-4 h-48 w-full object-cover">
             </div>
 
             <div class="flex gap-4">
-                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Mettre à jour</button>
+                <button class="button-validate">Mettre à jour</button>
                 <a href="{{route('location.show', $location->id)}}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Annuler</a>
             </div>
+            @if($errors->any())
+                <div class="mt-6 p-4 bg-red-100 border border-red-400 text-red-700">
+                    <h2 class="font-bold">Liste des erreurs</h2>
+                    <ul class="list-disc pl-5">
+                        @foreach($errors as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </div>
     <script>

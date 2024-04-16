@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLocationRequest;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -31,28 +32,11 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLocationRequest $request)
     {
-        $phoneRegex = '^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0([0-9]{9}$|[0-9\-\s]{10}$)';
+        $validated = $request->validated();
 
-        $validated = $request->validate(
-            [
-                'designation' => ['required', 'string', 'max:60'],
-                'address' => ['required', 'string', 'max:255'],
-                'website' => ['required','url:http,https', 'max:255'],
-                'phone' => ['required', "regex:/$phoneRegex/", 'max:30'],
-                'picture_url' => ['required','url:http,https', 'max:1000'],
-            ]
-        );
-
-        $location = new Location();
-
-        $location->slug = toSlug($validated['designation']);
-        $location->designation = $validated['designation'];
-        $location->address = $validated['address'];
-        $location->website = $validated['website'];
-        $location->phone = $validated['phone'];
-        $location->picture_url = $validated['picture_url'];
+        $location = Location::create($validated);
 
         $location->save();
 
@@ -86,23 +70,11 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreLocationRequest $request, string $id)
     {
-        $phoneRegex = '^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0([0-9]{9}$|[0-9\-\s]{10}$)';
-
-        $validated = $request->validate(
-            [
-                'designation' => ['required', 'string', 'max:60'],
-                'address' => ['required', 'string', 'max:255'],
-                'website' => ['nullable','url:http,https', 'max:255'],
-                'phone' => ['required', "regex:/$phoneRegex/", 'max:30'],
-                'picture_url' => ['required','url:http,https', 'max:1000'],
-            ]
-        );
+        $validated = $request->validated();
 
         $location = Location::find($id);
-
-        $location->slug = toSlug($validated['designation']);
 
         $location->update($validated);
 
