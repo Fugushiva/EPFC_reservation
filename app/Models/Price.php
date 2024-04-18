@@ -12,7 +12,7 @@ class Price extends Model
 
     protected $fillable = ['type', 'price', 'start_date', 'end_date'];
 
-    protected $table = 'price';
+    protected $table = 'prices';
 
     public $timestamps = false;
 

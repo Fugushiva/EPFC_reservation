@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RepresentationController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,6 +122,23 @@ Route::delete('/location/{id}', [LocationController::class, 'destroy'])
 
 Route::post('/location/search', [LocationController::class, 'search'])
     ->name('location.search');
+
+//routes pour representation
+Route::get('/representation', [RepresentationController::class, 'index'])
+    ->name('representation.index');
+
+//Route pour réservations
+
+Route::get('/reservations/', [ReservationController::class, 'index'])
+    ->name('reservations.index');
+
+Route::post('/reservations/add', [ReservationController::class, 'post'])
+    ->name('reservation.post');
+
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Locality;
+use App\Models\Representation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,7 +31,11 @@ class DatabaseSeeder extends Seeder
             LocationSeeder::class,
             RoleSeeder::class,
             RoleUserSeeder::class,
-            LocalitySeeder::class
+            LocalitySeeder::class,
+            RepresentationSeeder::class,
+            ReservationSeeder::class,
+            PriceSeeder::class,
+            ReprensentationReservationSeeder::class,
         ]);
     }
 }

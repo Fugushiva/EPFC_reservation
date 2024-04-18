@@ -39,9 +39,9 @@ class Show extends Model
         return $this->belongsTo(Location::class);
     }
 
-    public function representations(): belongsTo
+    public function representations(): HasMany
     {
-        return $this->belongsTo(Representation::class);
+        return $this->hasMany(Representation::class);
     }
 
     public function artist():belongsToMany

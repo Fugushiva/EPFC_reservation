@@ -15,7 +15,7 @@ class ShowController extends Controller
      */
     public function index(Request $request)
     {
-        $shows = Show::all();
+        $shows = Show::with('representations', 'location')->get();
         $user = $request->user() ? User::find($request->user()->id) : null;
 
 
@@ -58,7 +58,7 @@ class ShowController extends Controller
     public function show(string $id, Request $request)
 
     {
-        $show = Show::find($id);
+        $show = Show::with(['representations.location'])->findOrFail($id);
 
 
         return view('show.show', [

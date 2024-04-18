@@ -33,6 +33,11 @@
                         {{ __('Locations') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('representation.index')" :active="request()->routeIs('representation')">
+                        {{ __('Representation') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -60,6 +65,9 @@
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('reservations.index')">
+                                {{ __('Mes reservations') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->

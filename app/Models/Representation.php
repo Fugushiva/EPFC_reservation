@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -11,25 +12,25 @@ class Representation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['show_id', 'when', 'location_id'];
+    protected $fillable = ['show_id', 'schedule', 'location_id'];
 
     protected $table = 'representations';
 
     public $timestamps = false;
 
-    public function shows(): HasMany
+    public function show(): BelongsTo
     {
-        return $this->hasMany(Show::class);
+        return $this->belongsTo(Show::class);
     }
 
-    public function locations(): HasMany
+    public function location(): BelongsTo
     {
-        return $this->hasMany(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
     public function reservations(): BelongsToMany
     {
-        return $this->belongsToMany(Reservation::class, 'representation_reservation', 'representation_id', 'reservation_id');
+        return $this->belongsToMany(Reservation::class, 'representation_reservation');
     }
 
 

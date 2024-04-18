@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Location extends Model
 {
@@ -23,9 +24,9 @@ class Location extends Model
         return $this->hasMany(Show::class);
     }
 
-    public function representation(): BelongsTo
+    public function representation(): HasOne
     {
-        return $this->belongsTo(Representation::class);
+        return $this->hasOne(Representation::class);
     }
 
     public function localities(): HasMany

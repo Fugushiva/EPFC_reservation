@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('representations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('show_id')->constrained()->onUpdate('cascade');
-            $table->dateTime('when');
+            $table->dateTime('schedule');
             $table->foreignId('location_id')->constrained()->onUpdate('cascade');
         });
     }
