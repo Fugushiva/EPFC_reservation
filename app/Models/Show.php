@@ -78,4 +78,9 @@ class Show extends Model
         }
         return $query;
     }
+
+    public function scopeWithDistinctShows($query)
+    {
+        return $query->select(['title', 'id'])->distinct();
+    }
 }

@@ -127,13 +127,34 @@ Route::post('/location/search', [LocationController::class, 'search'])
 Route::get('/representation', [RepresentationController::class, 'index'])
     ->name('representation.index');
 
+Route::get('/representation/{id}', [RepresentationController::class, 'show'])
+    ->name('representation.show')
+    ->where('id','[0-9]+' );
+
+Route::get('representation/edit/{id}', [RepresentationController::class, 'edit'])
+    ->name('representation.edit')
+    ->where('id', '[0-9]+');
+Route::put('representation/{id}', [RepresentationController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->name('representation.update');
+
+Route::get('representation/create', [RepresentationController::class, 'create'])
+    ->name('representation.create');
+Route::post('/representation', [RepresentationController::class, 'store'])
+    ->name('representation.store');
+
+
 //Route pour réservations
 
-Route::get('/reservations/', [ReservationController::class, 'index'])
+Route::get('/reservations', [ReservationController::class, 'index'])
     ->name('reservations.index');
 
-Route::post('/reservations/add', [ReservationController::class, 'post'])
+Route::post('/reservations', [ReservationController::class, 'post'])
     ->name('reservation.post');
+
+Route::delete('/representation/{id}', [RepresentationController::class, 'destroy'])
+    ->name('representation.destroy')
+    ->where('id', '[0-9]+');
 
 
 

@@ -50,6 +50,7 @@ class LocationController extends Controller
     {
         $location = Location::find($id);
 
+
         return view('location.show', [
             'location' => $location
         ]);

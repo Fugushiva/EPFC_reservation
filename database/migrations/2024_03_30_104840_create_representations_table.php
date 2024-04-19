@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('representations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('show_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('show_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->dateTime('schedule');
-            $table->foreignId('location_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('location_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

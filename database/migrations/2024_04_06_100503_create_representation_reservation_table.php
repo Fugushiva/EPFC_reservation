@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('representation_reservation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('representation_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('reservation_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('price_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('representation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('reservation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('price_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->tinyInteger('quantity');
         });
     }

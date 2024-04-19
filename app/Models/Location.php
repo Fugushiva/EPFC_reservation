@@ -58,4 +58,9 @@ class Location extends Model
         return $query;
     }
 
+    public function scopeWithDistinctLocations($query)
+    {
+        return $query->select(['designation', 'id'])->distinct();
+    }
+
 }

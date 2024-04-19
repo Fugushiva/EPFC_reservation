@@ -2,7 +2,7 @@
     <x-slot name="index">
     </x-slot>
     <h1 class="text-4xl font-bold">Liste des représentations</h1>
-    <div class="">
+    <div class=" flex flex-col gap-6">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr>
@@ -16,28 +16,50 @@
                     Heure
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Localisation
+                    Salle de spectacle
                 </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Action
+                </th>
+
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
             @foreach ($representations as $representation)
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
+                        <a class="underline"
+                           href="{{route('show.show', $representation->show->id)}}">{{$representation->show->title}}</a>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <!--Date-->
+                        {{date('d-m-Y',strtotime($representation->schedule))}}
                     </td>
 
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                       <!--Heure-->
+                        {{date('H:i',strtotime($representation->schedule))}}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <!--localisation-->
+                        <a class="underline"
+                           href="{{route('location.show', $representation->location->id)}}">{{$representation->location->designation}}</a>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap flex gap-3">
+
+                        <a href="{{route('representation.show', $representation->id)}}"><i
+                                class="fa-solid fa-eye button-validate"></i></a>
+                        <form method="post" action="{{route('representation.destroy', $representation->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button><i class="fa-solid fa-trash button-cancel"></i></button>
+                        </form>
+                        <a href="{{route('representation.edit', $representation->id)}}"><i
+                                class="fa-solid fa-pencil button-modify"></i></a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <div class="self-center">
+            <a class="button-validate" href="{{route('representation.create')}}">Ajouter une nouvelle representation</a>
+        </div>
     </div>
 </x-app-layout>

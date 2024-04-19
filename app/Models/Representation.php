@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Representation extends Model
+class Representation extends Model implements Feedable
 {
     use HasFactory;
 
@@ -31,6 +34,26 @@ class Representation extends Model
     public function reservations(): BelongsToMany
     {
         return $this->belongsToMany(Reservation::class, 'representation_reservation');
+    }
+
+
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->show->title)
+            ->summary($this->show->description)
+            ->updated(Carbon::now())
+            // updated ($this->updated_at)//TODO ajouter au model et migrer
+            ->link(route('representation.show', $this->id))
+            ->authorName('Jérôme') // changer dans les variable env APP_AUTHOR'
+            ->authorEmail('jeromedelodder@gmail.com');
+    }
+
+    public static function getFeedItems()
+    {
+        return Representation::all(); //todo rep de ce mois
     }
 
 
