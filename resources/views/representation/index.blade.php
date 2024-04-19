@@ -46,20 +46,25 @@
 
                         <a href="{{route('representation.show', $representation->id)}}"><i
                                 class="fa-solid fa-eye button-validate"></i></a>
-                        <form method="post" action="{{route('representation.destroy', $representation->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <button><i class="fa-solid fa-trash button-cancel"></i></button>
-                        </form>
-                        <a href="{{route('representation.edit', $representation->id)}}"><i
-                                class="fa-solid fa-pencil button-modify"></i></a>
+                        @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
+                            <form method="post" action="{{route('representation.destroy', $representation->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button><i class="fa-solid fa-trash button-cancel"></i></button>
+
+                            </form>
+                            <a href="{{route('representation.edit', $representation->id)}}"><i
+                                    class="fa-solid fa-pencil button-modify"></i></a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <div class="self-center">
-            <a class="button-validate" href="{{route('representation.create')}}">Ajouter une nouvelle representation</a>
-        </div>
+        @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
+            <div class="self-center">
+                <a class="button-validate" href="{{route('representation.create')}}">Ajouter une nouvelle representation</a>
+            </div>
+        @endif
     </div>
 </x-app-layout>
