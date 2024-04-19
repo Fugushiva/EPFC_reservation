@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title> {{config('app.name', 'Laravel') }}  - @yield('title')</title>
+        <!--Flux rss-->
+        <x-feed-links />
     </head>
     <body>
         <div class="container">

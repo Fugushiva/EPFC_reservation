@@ -141,5 +141,13 @@ Route::post('/reservations/add', [ReservationController::class, 'post'])
 
 
 
+//spatie
+Route::feeds();
+
+
+//route spatie
+
+
+
 
 require __DIR__.'/auth.php';
