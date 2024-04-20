@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
 
 class Price extends Model
 {
@@ -20,5 +21,10 @@ class Price extends Model
     public function representationReservation(): HasOne
     {
         return $this->hasOne(RepresentationReservation::class);
+    }
+
+    public function scopeWithDistinctPrices(Builder $query)
+    {
+        return $query->distinct()->pluck('type');
     }
 }

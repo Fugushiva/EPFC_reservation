@@ -21,19 +21,19 @@ class PriceSeeder extends Seeder
 
         $dataset = [
             [
-                'type' => 'Adult',
+                'type' => 'défaut',
                 'price' => '20',
                 'start_date' => new DateTime('2023-11-23'),
                 'end_date' => new DateTime('2024-02-09')
             ],
             [
-                'type' => 'children',
+                'type' => 'promos',
                 'price' => '10',
                 'start_date' => new DateTime('2023-11-23'),
                 'end_date' => new DateTime('2024-02-09')
             ],
             [
-                'type' => 'elder',
+                'type' => 'étudiant',
                 'price' => '15',
                 'start_date' => new DateTime('2023-11-23'),
                 'end_date' => new DateTime('2024-02-09')

@@ -28,6 +28,7 @@ class StoreRepresentationRequest extends FormRequest
             'location_id' => ['required', 'exists:locations,id'],
             'schedule_time' => ['required', 'date_format:H:i'],
             'schedule_date' => ['required', 'date_format:Y-m-d'],
+            'price' => ['required', 'decimal:2']
         ];
     }
 

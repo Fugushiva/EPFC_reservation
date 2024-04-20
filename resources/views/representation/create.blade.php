@@ -24,6 +24,16 @@
             </select>
         </div>
         <div>
+            <select id="type" name="type">
+                <option value="">--Please choose an option--</option>
+                @foreach($types as $type)
+                    <option value="{{$type}}">{{$type}}</option>
+                @endforeach
+            </select>
+            <label for="price">price</label>
+            <input name="price" id="price" type="number">
+        </div>
+        <div>
             <label for="time">Heure</label>
             <input name="schedule_time" id="time" type="time">
         </div>
@@ -52,5 +62,6 @@
         </div>
     @endif
 
-    <a href="{{ route('artist.index') }}" class="block mt-4 underline text-blue-600 hover:text-blue-800">Retour à l'index</a>
+    <a href="{{ route('artist.index') }}" class="block mt-4 underline text-blue-600 hover:text-blue-800">Retour à
+        l'index</a>
 </x-app-layout>

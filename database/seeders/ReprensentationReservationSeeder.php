@@ -29,7 +29,7 @@ class ReprensentationReservationSeeder extends Seeder
                 //reservation
                 'booking_date' => new DateTime('2023-09-20 15:00:00'),
                 //price
-                'type' => 'adult',
+                'type' => 'défaut',
                 'quantity' => '2'
             ],
             [
@@ -38,7 +38,7 @@ class ReprensentationReservationSeeder extends Seeder
                 //reservation
                 'booking_date' => new DateTime('2023-08-16 18:27:00'),
                 //price
-                'type' => 'children',
+                'type' => 'promos',
                 'quantity' => '1'
             ],
             [
@@ -47,7 +47,7 @@ class ReprensentationReservationSeeder extends Seeder
                 //reservation
                 'booking_date' => new DateTime('2024-03-26 16:15:00'),
                 //price
-                'type' => 'elder',
+                'type' => 'étudiant',
                 'quantity' => '1'
             ],
             [
@@ -56,7 +56,7 @@ class ReprensentationReservationSeeder extends Seeder
                 //reservation
                 'booking_date' => new DateTime('2023-08-20 16:00:00'),
                 //price
-                'type' => 'adult',
+                'type' => 'défaut',
                 'quantity' => '1'
             ],
         ];

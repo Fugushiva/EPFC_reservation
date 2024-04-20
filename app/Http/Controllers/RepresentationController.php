@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRepresentationRequest;
+use App\Models\Price;
 use App\Models\Representation;
+use App\Models\RepresentationReservation;
 use App\Models\Show;
 use App\Models\Location;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RepresentationController extends Controller
 {
@@ -28,16 +32,24 @@ class RepresentationController extends Controller
     public function create()
     {
         $this->authorize('create', Representation::class);
-        $representations = Representation::with('show', 'location')->get();
+        $representations = Representation::with('show', 'location', 'representationReservations')->get();
+
+
+        $columnDefinition = DB::select("SHOW COLUMNS FROM prices WHERE Field = 'type'")[0]->Type;
+
+        preg_match("/^enum\((.*)\)$/", $columnDefinition, $matches);
+
+        $typesLists = str_getcsv($matches[1], ",", "'");
+
 
         $shows = Show::withDistinctShows()->get();
-
         $locations = location::withDistinctLocations()->get();
 
         return view('representation.create', [
             'representations' => $representations,
             'shows' => $shows,
             'locations' => $locations,
+            'types' => $typesLists,
         ]);
     }
 
@@ -46,14 +58,31 @@ class RepresentationController extends Controller
      */
     public function store(StoreRepresentationRequest $request)
     {
+
         $validate = $request->validated();
         $validate['schedule'] = $request->schedule_date . ' ' . $request->schedule_time;
         unset($validate['schedule_time']);
         unset($validate['schedule_date']);
         $representation = Representation::create($validate);
 
-
         $representation->save();
+
+        $priceData = [
+            'price' => $request->price,
+            'type' => $request->type,
+            'start_date' => new DateTime('now'),
+            'end_date' => $request->schedule_date
+        ];
+
+        $price = Price::create($priceData);
+
+
+        $rrData = [
+            'representation_id' => $representation->id,
+            'price_id' => $price->id,
+        ];
+
+        RepresentationReservation::create($rrData);
 
         return redirect(route('representation.index'));
 
