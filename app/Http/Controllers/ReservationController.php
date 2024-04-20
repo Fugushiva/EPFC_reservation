@@ -2,28 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReservationRequest;
+use App\Models\RepresentationReservation;
 use App\Models\Reservation;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
     public function index(Request $request)
     {
-        $userId = $request->user()->id;
-        $representations = [];
-        $reservations = Reservation::with(['user', 'representations.show'])->where('user_id', '=', $userId)->get();
+        $representationReservations = RepresentationReservation::with([
+            'representation.show',
+            'representation.location'
+        ])->whereHas('reservation', function ($query) use ($request){
+            $query->where('user_id', $request->user()->id);
+        })->get();
+        //dd($representationReservations);
 
-        foreach($reservations as $reservation){
-            $representations = $reservation->representations;
-        }
 
         return view('reservation.index', [
-            'representations' => $representations,
+            'representationReservations' => $representationReservations,
         ]);
     }
 
-    public function post(Request $request)
+    public function post(StoreReservationRequest $request)
     {
-        dd($request);
+
+        $reservation = new Reservation();
+        $reservation->user_id = $request->user()->id;
+        $reservation->booking_date = new DateTime('now');
+        $reservation->status = 'draft';
+
+        $reservation->save();
+
+        $reservation->representationReservations()->create([
+            'representation_id' => $request->representation_id,
+            'price_id' => $request->price_id,
+            'quantity' => $request->quantity
+        ]);
+
+
+
+
+
+        return redirect()->route('reservations.index');
     }
 }

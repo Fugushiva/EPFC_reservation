@@ -11,18 +11,21 @@
                 </tr>
                 </thead>
                 <tbody class="text-gray-700">
-                @foreach($representations as $representation)
+                @foreach($representationReservations as $rr)
                     <tr class="border-b hover:bg-gray-100">
-                        <td class="py-3 px-4"><a class="underline"
-                                                 href="{{route('show.show', $representation->show->id)}}">{{$representation->show->title}}</a>
+                        <td class="py-3 px-4">
+                            <a class="underline" href="{{ route('show.show', $rr->representation->show->id) }}">
+                                {{ $rr->representation->show->title }}
+                            </a>
                         </td>
-                        <td class="py-3 px-4">{{$representation->schedule}}</td>
-                        <td class="py-3 px-4"><a class='underline'
-                                                 href="{{route('location.show', $representation->location->id)}}">{{$representation->location->designation}}</a>
+                        <td class="py-3 px-4">{{ $rr->representation->schedule }}</td>
+                        <td class="py-3 px-4">
+                            <a class='underline' href="{{ route('location.show', $rr->representation->location->id) }}">
+                                {{ $rr->representation->location->designation }}
+                            </a>
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
         </div>

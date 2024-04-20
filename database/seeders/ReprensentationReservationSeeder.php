@@ -50,6 +50,15 @@ class ReprensentationReservationSeeder extends Seeder
                 'type' => 'elder',
                 'quantity' => '1'
             ],
+            [
+                //representation
+                'schedule' => new DateTime('2024-08-09 15:30:00'),
+                //reservation
+                'booking_date' => new DateTime('2023-08-20 16:00:00'),
+                //price
+                'type' => 'adult',
+                'quantity' => '1'
+            ],
         ];
 
         foreach($dataset as &$data){

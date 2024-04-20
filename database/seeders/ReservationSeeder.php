@@ -27,6 +27,11 @@ class ReservationSeeder extends Seeder
                 'status' => 'draft'
             ],
             [
+                'login' => 'jerome',
+                'booking_date' => new DateTime('2023-08-20 16:00:00'),
+                'status' => 'draft'
+            ],
+            [
                 'login' => 'anna',
                 'booking_date' => new DateTime('2023-08-16 18:27:00'),
                 'status' => 'draft'

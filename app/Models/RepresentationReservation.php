@@ -22,8 +22,13 @@ class RepresentationReservation extends Model
         return $this->belongsTo(Price::class);
     }
 
-    public function representations(): HasMany
+    public function representation(): BelongsTo
     {
-        return $this->hasMany(Representation::class);
+        return $this->belongsTo(Representation::class);
+    }
+
+    public function reservation(): BelongsTo
+    {
+        return $this->belongsTo(Reservation::class);
     }
 }

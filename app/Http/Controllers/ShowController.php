@@ -58,7 +58,7 @@ class ShowController extends Controller
     public function show(string $id, Request $request)
 
     {
-        $show = Show::with(['representations.location'])->findOrFail($id);
+        $show = Show::with(['representations.location', 'representations.representationReservations.price'])->findOrFail($id);
 
 
         return view('show.show', [

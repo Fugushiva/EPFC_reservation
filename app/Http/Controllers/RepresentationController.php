@@ -27,6 +27,7 @@ class RepresentationController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Representation::class);
         $representations = Representation::with('show', 'location')->get();
 
         $shows = Show::withDistinctShows()->get();
@@ -94,8 +95,12 @@ class RepresentationController extends Controller
      */
     public function update(StoreRepresentationRequest $request, string $id)
     {
-        $validate = $request->validated();
         $representation = Representation::with('show', 'location')->findOrFail($id);
+
+
+        $this->authorize('update', $representation);
+
+        $validate = $request->validated();
         $representation->schedule = $request->schedule_date . ' ' . $request->schedule_time;
         $representation->update($validate);
 
@@ -109,7 +114,12 @@ class RepresentationController extends Controller
      */
     public function destroy(string $id)
     {
-        $representation = Representation::findOrFail($id)->destroy($id);
+        $representation = Representation::findOrFail($id);
+
+        $this->authorize('delete', $representation);
+
+        $representation->delete();
+
 
         return redirect(route('representation.index'));
     }

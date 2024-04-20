@@ -31,9 +31,13 @@ class Representation extends Model implements Feedable
         return $this->belongsTo(Location::class);
     }
 
-    public function reservations(): BelongsToMany
+    public function representationReservations(): HasMany
     {
-        return $this->belongsToMany(Reservation::class, 'representation_reservation');
+        return $this->hasMany(RepresentationReservation::class);
+    }
+    public function prices(): BelongsToMany
+    {
+        return $this->belongsToMany(Price::class, 'representation_reservation');
     }
 
 
