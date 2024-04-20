@@ -44,7 +44,7 @@
     </div>
 
 
-    <!-- Lien de modification visible uniquement par les administrateurs -->
+
     @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
         <div class="my-6 text-center">
             <a href="{{ route('show.edit', $show->id) }}" class="button-modify hover:bg-blue-600 transition-colors">
