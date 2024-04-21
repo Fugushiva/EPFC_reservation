@@ -31,7 +31,7 @@
                 @endforeach
             </select>
             <label for="price">price</label>
-            <input name="price" id="price" type="number">
+            <input name="price" id="price" type="number" step="any">
         </div>
         <div>
             <label for="time">Heure</label>
