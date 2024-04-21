@@ -20,7 +20,6 @@ class ReservationController extends Controller
         })->get();
         //dd($representationReservations);
 
-
         return view('reservation.index', [
             'representationReservations' => $representationReservations,
         ]);
@@ -35,16 +34,12 @@ class ReservationController extends Controller
         $reservation->status = 'draft';
 
         $reservation->save();
-
+        //dd($request);
         $reservation->representationReservations()->create([
             'representation_id' => $request->representation_id,
             'price_id' => $request->price_id,
             'quantity' => $request->quantity
         ]);
-
-
-
-
 
         return redirect()->route('reservations.index');
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RepresentationController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+require base_path('routes/stripe.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -156,6 +157,8 @@ Route::delete('/representation/{id}', [RepresentationController::class, 'destroy
     ->name('representation.destroy')
     ->where('id', '[0-9]+');
 
+//Route payement
+
 
 
 
@@ -166,7 +169,6 @@ Route::delete('/representation/{id}', [RepresentationController::class, 'destroy
 Route::feeds();
 
 
-//route spatie
 
 
 

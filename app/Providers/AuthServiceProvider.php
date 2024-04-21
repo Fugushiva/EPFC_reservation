@@ -10,6 +10,7 @@ use App\Policies\ShowPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Cashier\Cashier;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Cashier::calculateTaxes();
+
         Gate::define('create-artist', function (User $user){
             return $user->roles->contains('role', 'admin');
         });

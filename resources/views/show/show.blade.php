@@ -29,7 +29,7 @@
                         <p>Prix: {{$repReservation->price->price}} €</p>
                     @endforeach
                     @if(Auth::user())
-                        <form method="post" action="{{route('reservation.post')}}">
+                        <form method="post" action="{{route('stripe.checkout')}}">
                             @csrf
                             <input type="hidden" name="representation_id" value="{{ $representation->id }}">
                             <input type="hidden" name="price_id" value="{{ $repReservation->price->id }}">
