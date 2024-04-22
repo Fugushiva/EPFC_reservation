@@ -17,8 +17,8 @@ return new class extends Migration
             $table->renameColumn('name', 'firstname');
 
             $table->string('lastname', 60)->after('name')->nullable();
-            $table->string('login', 30)->after('id');
-            $table->string('langue', 2);
+            $table->string('login', 30)->after('id')->nullable();
+            $table->string('langue', 2)->default('fr');
             DB::statement('ALTER TABLE users MODIFY COLUMN `name` VARCHAR(60)');
             $table->unique('login', 'users_login_unique');
         });
