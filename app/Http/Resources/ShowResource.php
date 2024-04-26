@@ -28,6 +28,16 @@ class ShowResource extends JsonResource
         });
 
 
+        $representations = $this->representations->map(function ($representation){
+            return [
+                $representation->location->designation,
+                $representation->location->address,
+                $representation->schedule,
+                $representation->location->phone,
+            ];
+        });
+
+
 
 
 
@@ -38,7 +48,9 @@ class ShowResource extends JsonResource
             'description' => $this->description,
             'bookable' => $this->bookable === 1 ? "yes" : "no",
             'duration' => $this->duration . ' minutes',
-            'types' => $artistTypes,
+            'liste des representations' => $representations,
+            'Artites liés' => $artistTypes,
+
         ];
     }
 }

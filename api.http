@@ -2,6 +2,8 @@ GET http://127.0.0.1:8000/api/shows
 Accept: application/json
 //Content-Type: application/json
 
+
+//post create
 /*
 {
     "title": "SPEC 2",
