@@ -22,13 +22,11 @@ class ShowResource extends JsonResource
         $artistTypes = $this->artistTypes->map(function ($artistType) {
             return [
                 $artistType->type->type,
-                $artistType->artist
+                $artistType->artist->firstname,
+                $artistType->artist->lastname,
             ];
         });
 
-        $artistNames = $this->artistTypes->map(function ($artistType) {
-            return $artistType->artist;
-        });
 
 
         return [
