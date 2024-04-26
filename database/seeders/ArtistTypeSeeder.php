@@ -23,43 +23,50 @@ class ArtistTypeSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
-        $types = Type::all()->pluck('type')->toArray();
+
 
         $dataset = [
-            ['firstname' => 'Daniel', 'lastname' => 'Marcelin'],
-            ['firstname' => 'Daniel', 'lastname' => 'Marcelin'],
-            ['firstname' => 'Daniel', 'lastname' => 'Marcelin',],
-            ['firstname' => 'Olivier', 'lastname' => 'Boudon',],
-            ['firstname' => 'Laurent', 'lastname' => 'Caron',],
-            ['firstname' => 'Daniel', 'lastname' => 'marcelin',],
-            ['firstname' => 'Laurent', 'lastname' => 'Caron',],
-            ['firstname' => 'Daniel', 'lastname' => 'Marcelin'],
-            ['firstname' => 'Philippe', 'lastname' => 'Laurent'],
-            ['firstname' => 'Marius', 'lastname' => 'Von Mayenburg'],
-            ['firstname' => 'Olivier', 'lastname' => 'Boudon'],
-            ['firstname' => 'Anne Marie', 'lastname' => 'Loop'],
-            ['firstname' => 'Pietro', 'lastname' => 'Varasso'],
-            ['firstname' => 'Laurent', 'lastname' => 'Caron'],
-            ['firstname' => 'Élena', 'lastname' => 'Perez'],
-            ['firstname' => 'Guillaume', 'lastname' => 'Alexandre'],
-            ['firstname' => 'Claude', 'lastname' => 'Semal'],
-            ['firstname' => 'Laurence', 'lastname' => 'Warin'],
+            [
+                'firstname'=>'Daniel',
+                'lastname' => 'Marcelin',
+                'type' => 'auteur'
+            ],
+            [
+                'firstname'=>'Daniel',
+                'lastname' => 'Marcelin',
+                'type' => 'comédien'
+            ],
+            [
+                'firstname'=>'Daniel',
+                'lastname' => 'Marcelin',
+                'type' => 'scénographe'
+            ],
+            [
+                'firstname' => 'Olivier',
+                'lastname' => 'Boudon',
+                'type' => 'comédien',
+            ],
+            [
+                'firstname' => 'Laurent',
+                'lastname' => 'Caron',
+                'type' => 'scénographe',
+            ]
 
         ];
-        foreach ($dataset as &$record) {
+        foreach($dataset as &$record) {
             $artist = Artist::where([
-                ['firstname', '=', $record['firstname']],
-                ['lastname', '=', $record['lastname']],
+                ['firstname','=', $record['firstname']],
+                ['lastname','=',$record['lastname']],
             ])->first();
-
-            $randomType = $types[array_rand($types)];
-            $type = Type::where('type', $randomType)->first();
+            $type = Type::where([
+                ['type', '=', $record['type']]
+            ])->first();
 
             $record['artist_id'] = $artist->id;
             $record['type_id'] = $type->id;
             unset($record['firstname']);
             unset($record['lastname']);
-
+            unset($record['type']);
         }
         DB::table('artist_types')->insert($dataset);
     }
