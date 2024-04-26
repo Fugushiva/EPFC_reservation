@@ -1,2 +1,12 @@
 GET http://127.0.0.1:8000/api/shows
 Accept: application/json
+//Content-Type: application/json
+
+/*
+{
+    "title": "SPEC 2",
+    "description": "Mise à jour de la description",
+    "duration": 120,
+    "bookable": 0
+}
+*/

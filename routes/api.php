@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\ShowController;
-use App\Http\Controllers\ShowRessourcesApiController;
-use App\Models\Show;
+use App\Http\Controllers\api\ShowRessourcesApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

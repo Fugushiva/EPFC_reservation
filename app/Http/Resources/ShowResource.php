@@ -29,10 +29,16 @@ class ShowResource extends JsonResource
 
 
 
+
+
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'types' => $artistTypes
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'bookable' => $this->bookable === 1 ? "yes" : "no",
+            'duration' => $this->duration . ' minutes',
+            'types' => $artistTypes,
         ];
     }
 }

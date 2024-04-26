@@ -25,9 +25,6 @@
                         {{$representation->location->designation}}
                         le {{ date('d-m-Y à H:i', strtotime($representation->schedule)) }}
                     </p>
-                    @foreach($representation->representationReservations as $repReservation)
-                        <p>Prix: {{$repReservation->price->price}} €</p>
-                    @endforeach
                     @if(Auth::user())
                         <form method="post" action="{{route('stripe.checkout')}}">
                             @csrf
@@ -46,10 +43,15 @@
 
 
     @if(Auth::user() && Auth::user()->roles->contains('role', 'admin'))
-        <div class="my-6 text-center">
+        <div class="my-6 text-center flex gap-3">
             <a href="{{ route('show.edit', $show->id) }}" class="button-modify hover:bg-blue-600 transition-colors">
                 Modifier
             </a>
+            <form action="{{route('show.delete', $show->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="button-cancel">Supprimer</button>
+            </form>
         </div>
     @endif
 </x-app-layout>
