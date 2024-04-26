@@ -26,6 +26,14 @@ class TypeSeeder extends Seeder
             ['type' => 'auteur'],
             ['type' => 'scénographe'],
             ['type' => 'comédien'],
+            ['type' => 'réalisateur'],
+            ['type' => 'danseur'],
+            ['type' => 'chanteur'],
+            ['type' => 'chargé de production'],
+            ['type' => 'costumier'],
+            ['type' => 'perchman'],
+            ['type' => 'régisseur'],
+            ['type' => 'éclairagiste'],
         ];
 
         DB::table('types')->insert($dataset);

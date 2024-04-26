@@ -1,0 +1,6 @@
+http://127.0.0.1:8000/shows
+Accept: application/json
+
+###
+http://127.0.0.1:8000/shows/1
+Accept: application/json

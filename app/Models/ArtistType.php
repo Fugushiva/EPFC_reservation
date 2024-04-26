@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class ArtistType extends Model
@@ -16,6 +16,11 @@ class ArtistType extends Model
     protected $table = 'artist_types';
 
     public $timestamps = false;
+
+    public function shows():BelongsToMany
+    {
+        return $this->belongsToMany(Show::class);
+    }
 
 
 }

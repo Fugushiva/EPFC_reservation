@@ -160,11 +160,6 @@ Route::delete('/representation/{id}', [RepresentationController::class, 'destroy
 //Route payement
 
 
-
-
-
-
-
 //spatie
 Route::feeds();
 
@@ -174,3 +169,4 @@ Route::feeds();
 
 
 require __DIR__.'/auth.php';
+require __DIR__.'/api.php';
