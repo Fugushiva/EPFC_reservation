@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class Show extends Model
 {
@@ -29,9 +31,14 @@ class Show extends Model
 
     public $timestamps = true;
 
-    public function artistTypes(): BelongsToMany
+    public function artistTypes()
     {
-        return $this->belongsToMany(ArtistType::class);
+        return $this->belongsToMany(
+            ArtistType::class,
+            'artist_type_show',
+            'show_id',
+            'artist_type_id'
+        );
     }
 
     public function location(): BelongsTo
@@ -44,19 +51,15 @@ class Show extends Model
         return $this->hasMany(Representation::class);
     }
 
-    public function artist():belongsToMany
-    {
-        return $this->belongsToMany(Artist::class);
-    }
 
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    public function scopeWithTitle($query,$title)
+    public function scopeWithTitle($query, $title)
     {
-        if(!empty($title)){
+        if (!empty($title)) {
             return $query->where('title', 'LIKE', "%{$title}%");
         }
         return $query;
@@ -64,7 +67,7 @@ class Show extends Model
 
     public function scopeWithDuration($query, $duration)
     {
-        if(!empty($duration)){
+        if (!empty($duration)) {
             return $query->where('duration', 'LIKE', "{$duration}");
         }
         return $query;
@@ -72,7 +75,7 @@ class Show extends Model
 
     public function scopeIsBookable($query, $bookable)
     {
-        if(!empty($bookable)){
+        if (!empty($bookable)) {
             $bookableValue = $bookable == 'on' ? 1 : 0;
             return $query->where('bookable', $bookableValue);
         }

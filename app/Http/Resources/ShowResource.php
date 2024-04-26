@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Artist;
+use App\Models\ArtistType;
+use App\Models\Show;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,10 +19,22 @@ class ShowResource extends JsonResource
     public function toArray(Request $request): array
     {
 
+        $artistTypes = $this->artistTypes->map(function ($artistType) {
+            return [
+                $artistType->type->type,
+                $artistType->artist
+            ];
+        });
+
+        $artistNames = $this->artistTypes->map(function ($artistType) {
+            return $artistType->artist;
+        });
+
+
         return [
             'id' => $this->id,
             'title' => $this->title,
-
+            'types' => $artistTypes
         ];
     }
 }

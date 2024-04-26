@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class ArtistType extends Model
@@ -17,5 +17,15 @@ class ArtistType extends Model
 
     public $timestamps = false;
 
+
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class, 'type_id'); // Relier à la table Type
+    }
+
+    public function artist(): belongsTo
+    {
+        return $this->belongsTo(Artist::class, 'artist_id');
+    }
 
 }
