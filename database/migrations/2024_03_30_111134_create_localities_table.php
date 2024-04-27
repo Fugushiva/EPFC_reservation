@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('localities', function (Blueprint $table) {
             $table->id();
-            $table->string('postal_code', 60);
+            $table->string('name', 200);
+            $table->integer('postal_code');
             $table->string('locality', 60);
         });
     }
