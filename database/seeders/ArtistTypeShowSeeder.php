@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ArtistType;
 use App\Models\Show;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,7 +23,7 @@ class ArtistTypeShowSeeder extends Seeder
         //array
         $showsId = Show::all()->pluck('id')->toArray();;
         //collection
-        $typesId = Type::all('id');
+        $typesId = ArtistType::all('id');
         $dataset = [];
         foreach ($typesId as $type_id){
             array_push($dataset, ['artist_type_id' => $type_id->id, 'show_id' => null]);

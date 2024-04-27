@@ -12,7 +12,7 @@
             <img src="{{ asset($location->picture_url) }}" alt="{{ $location->designation }}"
                  class="w-full h-48 object-cover">
             <div class="p-4">
-                <p class="text-xl mb-2">Adresse: {{$location->address}}</p>
+                <p class="text-xl mb-2">Adresse: {{$location->address}}, {{$location->locality->postal_code}} {{$location->locality->name}}</p>
                 <p class="text-xl mb-2">Numéro de téléphone: <a class='underline'
                                                                 href="tel:{{$location->phone}}">{{$location->phone}}</a>
                 </p>

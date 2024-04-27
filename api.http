@@ -1,6 +1,14 @@
-http://127.0.0.1:8000/shows
+http://127.0.0.1:8000/provinces/1
 Accept: application/json
+//Content-Type: application/json
 
-###
-http://127.0.0.1:8000/shows/1
-Accept: application/json
+
+//post create
+/*
+{
+    "title": "SPEC 2",
+    "description": "Mise à jour de la description",
+    "duration": 120,
+    "bookable": 0
+}
+*/

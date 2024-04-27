@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLocationRequest;
+use App\Models\Locality;
 use App\Models\Location;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -26,7 +28,14 @@ class LocationController extends Controller
      */
     public function create()
     {
-        return view('location.create');
+        $localities = Locality::all()->unique('locality');
+
+        $provinces = Province::all();
+
+        return view('location.create', [
+            'localities' => $localities,
+            'provinces' => $provinces
+        ]);
     }
 
     /**
@@ -34,6 +43,7 @@ class LocationController extends Controller
      */
     public function store(StoreLocationRequest $request)
     {
+
         $validated = $request->validated();
 
         $location = Location::create($validated);
@@ -48,11 +58,10 @@ class LocationController extends Controller
      */
     public function show(string $id)
     {
-        $location = Location::find($id);
-
-
+        $location = Location::with('locality')->findOrFail($id);
         return view('location.show', [
-            'location' => $location
+            'location' => $location,
+
         ]);
     }
 

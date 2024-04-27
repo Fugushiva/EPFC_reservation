@@ -24,6 +24,7 @@ class StoreLocationRequest extends FormRequest
         $phoneRegex = '^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0([0-9]{9}$|[0-9\-\s]{10}$)';
         return [
             'designation' => ['required', 'string', 'max:60'],
+            'locality_id' => ['required', 'exists:localities,id'],
             'address' => ['required', 'string', 'max:255'],
             'website' => ['nullable','url:http,https', 'max:255'],
             'phone' => ['required', "regex:/$phoneRegex/", 'max:30'],

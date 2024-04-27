@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ShowController;
-use App\Http\Controllers\ShowRessourcesApiController;
-use App\Models\Show;
+use App\Http\Controllers\api\LocalityResourceController;
+use App\Http\Controllers\api\ProvinceApiResourceController;
+use App\Http\Controllers\api\ShowRessourcesApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('shows', ShowRessourcesApiController::class);
+Route::apiResource('localities', LocalityResourceController::class );
+Route::apiResource('provinces', ProvinceApiResourceController::class );
