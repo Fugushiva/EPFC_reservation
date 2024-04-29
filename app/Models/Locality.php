@@ -21,5 +21,9 @@ class Locality extends Model
     {
         return $this->belongsTo(Province::class);
     }
+    public function location(): HasOne
+    {
+        return $this->hasOne(Location::class);
+    }
 
 }
