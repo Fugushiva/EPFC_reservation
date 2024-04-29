@@ -29,9 +29,9 @@ class Location extends Model
         return $this->hasOne(Representation::class);
     }
 
-    public function locality(): BelongsTo
+    public function localities(): HasMany
     {
-        return $this->belongsTo(Locality::class);
+        return $this->hasMany(Locality::class);
     }
 
     public function scopeWithDesignation($query ,$designation)
