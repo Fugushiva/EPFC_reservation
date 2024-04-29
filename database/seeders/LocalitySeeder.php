@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Locality;
-
 use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
