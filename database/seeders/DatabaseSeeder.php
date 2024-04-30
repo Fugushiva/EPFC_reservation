@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             RepresentationSeeder::class,
             ReservationSeeder::class,
+            PriceTypeSeeder::class,
             PriceSeeder::class,
             ReprensentationReservationSeeder::class,
             ArtistTypeShowSeeder::class,

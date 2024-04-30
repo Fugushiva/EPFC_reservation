@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PriceType;
 use DateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -38,8 +39,25 @@ class PriceSeeder extends Seeder
                 'start_date' => new DateTime('2023-11-23'),
                 'end_date' => new DateTime('2024-02-09')
             ],
+            [
+                'type' => 'retraîté',
+                'price' => '8',
+                'start_date' => new DateTime('2023-11-23'),
+                'end_date' => new DateTime('2024-02-09')
+            ],
+
 
         ];
+
+        foreach($dataset as &$data){
+            $type = PriceType::where([
+                ['type', '=', $data['type']]
+            ])->first();
+
+            $data['price_type_id'] = $type->id;
+
+            unset($data['type']);
+        }
 
         DB::table('prices')->insert($dataset);
     }

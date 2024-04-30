@@ -31,7 +31,7 @@ class Show extends Model
 
     public function artistTypes(): BelongsToMany
     {
-        return $this->belongsToMany(ArtistType::class);
+        return $this->belongsToMany(ArtistType::class, 'artist_type_show');
     }
 
     public function location(): BelongsTo
@@ -44,10 +44,6 @@ class Show extends Model
         return $this->hasMany(Representation::class);
     }
 
-    public function artist():belongsToMany
-    {
-        return $this->belongsToMany(Artist::class);
-    }
 
     public function reviews(): HasMany
     {

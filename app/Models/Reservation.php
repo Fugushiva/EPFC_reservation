@@ -30,7 +30,7 @@ class Reservation extends Model
 
     public function prices(): BelongsToMany
     {
-        return $this->belongsToMany(Price::class);
+        return $this->belongsToMany(Price::class, 'representation_reservation');
     }
 
 

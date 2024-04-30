@@ -13,7 +13,7 @@ class RepresentationPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class RepresentationPolicy
      */
     public function view(User $user, Representation $representation): bool
     {
-        //
+
     }
 
     /**

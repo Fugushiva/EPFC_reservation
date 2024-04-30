@@ -37,7 +37,7 @@ class ShowPolicy
      */
     public function update(User $user, Show $show): bool
     {
-
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class ShowPolicy
      */
     public function delete(User $user, Show $show): bool
     {
-
+        return true;
     }
 
     /**

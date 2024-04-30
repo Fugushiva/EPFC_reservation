@@ -13,7 +13,7 @@ class ReservationPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->roles->contains('role', 'admin');
     }
 
     /**
@@ -29,7 +29,7 @@ class ReservationPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->roles->contains('role', 'admin');
     }
 
     /**
@@ -37,7 +37,7 @@ class ReservationPolicy
      */
     public function update(User $user, Reservation $reservation): bool
     {
-        //
+        return $user->roles->contains('role', 'admin');
     }
 
     /**
@@ -45,7 +45,7 @@ class ReservationPolicy
      */
     public function delete(User $user, Reservation $reservation): bool
     {
-        //
+        return $user->roles->contains('role', 'admin');
     }
 
     /**

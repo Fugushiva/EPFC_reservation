@@ -26,7 +26,7 @@ class Artist extends Model
 
     public function types(): BelongsToMany
     {
-        return $this->belongsToMany(Type::class);
+        return $this->belongsToMany(Type::class, "artist_types");
     }
 
     public function shows(): HasMany

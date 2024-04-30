@@ -24,6 +24,7 @@ class RoleSeeder extends Seeder
         $dataset = [
             ['role' => 'member'],
             ['role' => 'admin'],
+            ['role' => 'artist'],
         ];
 
         DB::table('roles')->insert($dataset);

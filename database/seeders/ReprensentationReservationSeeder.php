@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Price;
+use App\Models\PriceType;
 use App\Models\Representation;
 use App\Models\Reservation;
 use DateTime;
@@ -68,7 +69,7 @@ class ReprensentationReservationSeeder extends Seeder
             $reservation = Reservation::where([
                ['booking_date', '=', $data['booking_date']]
             ])->first();
-            $price = Price::where([
+            $price = PriceType::where([
                ['type', '=', $data['type']]
             ])->first();
 
