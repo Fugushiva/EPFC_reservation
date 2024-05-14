@@ -8,6 +8,7 @@
                     <th class="py-3 px-4 uppercase font-semibold text-sm">Spectacle</th>
                     <th class="py-3 px-4 uppercase font-semibold text-sm">Date</th>
                     <th class="py-3 px-4 uppercase font-semibold text-sm">Salle</th>
+                    <th class="py-3 px-4 uppercase font-semibold text-sm">action</th>
                 </tr>
                 </thead>
                 <tbody class="text-gray-700">
@@ -23,6 +24,13 @@
                             <a class='underline' href="{{ route('location.show', $rr->representation->location->id) }}">
                                 {{ $rr->representation->location->designation }}
                             </a>
+                        </td>
+                        <td>
+                            <form method="post" action="{{route('reservation.destroy', $rr->reservation->id )}}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="button-cancel">Supprimer</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -144,6 +144,10 @@ Route::get('representation/create', [RepresentationController::class, 'create'])
 Route::post('/representation', [RepresentationController::class, 'store'])
     ->name('representation.store');
 
+Route::delete('/representation/{id}', [RepresentationController::class, 'destroy'])
+    ->name('representation.destroy')
+    ->where('id', '[0-9]+');
+
 
 //Route pour réservations
 
@@ -153,9 +157,11 @@ Route::get('/reservations', [ReservationController::class, 'index'])
 Route::post('/reservations', [ReservationController::class, 'post'])
     ->name('reservation.post');
 
-Route::delete('/representation/{id}', [RepresentationController::class, 'destroy'])
-    ->name('representation.destroy')
+Route::delete('/reservations/{id}', [ReservationController::class, 'destroy'])
+    ->name('reservation.destroy')
     ->where('id', '[0-9]+');
+
+
 
 //Route payement
 

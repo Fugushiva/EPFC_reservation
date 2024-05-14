@@ -18,10 +18,15 @@ class ReservationController extends Controller
         ])->whereHas('reservation', function ($query) use ($request){
             $query->where('user_id', $request->user()->id);
         })->get();
+
+
+
+
         //dd($representationReservations);
 
         return view('reservation.index', [
             'representationReservations' => $representationReservations,
+
         ]);
     }
 
@@ -40,6 +45,17 @@ class ReservationController extends Controller
             'price_id' => $request->price_id,
             'quantity' => $request->quantity
         ]);
+
+        return redirect()->route('reservations.index');
+    }
+
+    public function destroy($id)
+    {
+        $reservation = Reservation::find($id);
+
+        if($reservation){
+            $reservation->delete();
+        }
 
         return redirect()->route('reservations.index');
     }
