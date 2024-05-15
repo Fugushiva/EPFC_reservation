@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Show;
 use App\Models\User;
+use App\Observers\ShowObserver;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
 
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Cashier::useCustomerModel(User::class);
+        Show::observe(ShowObserver::class);
 
     }
 }

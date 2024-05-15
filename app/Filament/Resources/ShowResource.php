@@ -29,6 +29,9 @@ class ShowResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('poster_url')
                     ->required(),
+                Forms\Components\Checkbox::make('bookable')
+                    ->required(),
+                Forms\Components\TextInput::make('duration')->numeric(),
 
 
             ]);
