@@ -16,13 +16,19 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $artists = Artist::all();
+        $sort = $request->get('sort', 'firstname');
+        $direction = $request->get('direction', 'asc');
+
+
+        $artists = Artist::with('types')->orderBy($sort, $direction)->get();
 
         return view("artist.index", [
             'artists' => $artists,
-            'ressource' => 'artistes'
+            'ressource' => 'artistes',
+            'sort' => $sort,
+            'direction' => $direction
         ]);
     }
 
